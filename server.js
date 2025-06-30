@@ -10,6 +10,9 @@ app.set('views', path.join(__dirname, 'views'));
 //Definição do public
 app.use(express.static(path.join(__dirname, 'public')));
 
+//Usar o express
+app.use(express.json());
+
 //Porta para ser usada
 const PORT = process.env.PORT || 3000;
 
