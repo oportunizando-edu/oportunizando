@@ -36,31 +36,4 @@ async function startServer() {
 
 startServer();
 
-//Definição de constantes
-const express = require('express');;
-const path = require('path');
-
-//Definição da views
-app.set('view engine', 'ejs');
-app.set('views', path.join(__dirname, 'views'));
-
-//Definição do public
-app.use(express.static(path.join(__dirname, 'public')));
-
-//Usar o express
-app.use(express.json());
-
-//Rota de visualização
-app.get('/opportunities', (req, res)=> {
-  res.render('opportunities');
-})
-
-//Porta para ser usada
-const PORT = process.env.PORT || 3000;
-
-//Avisar que está funcionando
-app.listen( PORT, () =>{
-  console.log("Servidor rodando na porta:", PORT);
-})
-
 module.exports = app;
