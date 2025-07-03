@@ -37,8 +37,7 @@ async function startServer() {
 startServer();
 
 //Definição de constantes
-const express = require('express');
-const app = express();
+const express = require('express');;
 const path = require('path');
 
 //Definição da views
