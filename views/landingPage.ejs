@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= pageTitle %> | Início
+  </title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style-landingpage.css">
+</head>
+<%- include('partials/header', { pageTitle: 'Oportunizando' }) %>
+
+  <section class="text-center py-5 bg-light">
+    <div class="container">
+      <h1 class="display-4 mb-3">Bem-vindo ao <span class="text-primary">Oportunizando</span></h1>
+      <p class="lead mb-4">Conectando estudantes a oportunidades de crescimento, aprendizado e carreira.</p>
+      <a href="/register" class="btn btn-primary btn-lg me-2">Cadastre-se</a>
+      <a href="/login" class="btn btn-outline-primary btn-lg">Entrar</a>
+    </div>
+  </section>
+
+  <section class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="/assets/favicon.ico" alt="Oportunizando" class="img-fluid rounded shadow">
+      </div>
+      <div class="col-md-6">
+        <h2 class="mb-3">O que é o Oportunizando?</h2>
+        <p>O Oportunizando é uma plataforma dedicada a facilitar o acesso de estudantes a oportunidades acadêmicas,
+          estágios, empregos e projetos inovadores. Nosso objetivo é aproximar talentos de empresas e instituições que
+          buscam novos profissionais.</p>
+        <ul class="list-unstyled mt-4">
+          <li><i class="fas fa-check text-success me-2"></i> Vagas de estágio e emprego</li>
+          <li><i class="fas fa-check text-success me-2"></i> Projetos e desafios acadêmicos</li>
+          <li><i class="fas fa-check text-success me-2"></i> Desenvolvimento de habilidades</li>
+          <li><i class="fas fa-check text-success me-2"></i> Conexão com mentores e empresas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <%- include('partials/footer') %>
+    </body>
+
+</html>

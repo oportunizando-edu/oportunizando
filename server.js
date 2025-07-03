@@ -19,9 +19,6 @@ async function startServer() {
 
   app.use(express.json());
 
-  const userRoutes = require('./routes/userRoutes');
-  app.use('/users', userRoutes);
-
   const frontendRoutes = require('./routes/frontRoutes');
   app.use('/', frontendRoutes);
 
