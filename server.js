@@ -3,6 +3,9 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
+//Incialização do banco de dados
+require('./config/db');
+
 //Definição da views
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));

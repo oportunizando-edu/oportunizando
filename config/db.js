@@ -16,3 +16,13 @@ module.exports = {
   query: (text, params) => pool.query(text, params),
   connect: () => pool.connect(),
 };
+
+//Verificar se a conexão foi realizada com sucesso
+pool.connect()
+  .then(client => {
+    console.log('Conexão com o banco de dados realizada com sucesso');
+    client.release();
+  })
+  .catch(err => {
+    console.error('Erro ao se conectar com o banco de dados: ', err);
+  });
