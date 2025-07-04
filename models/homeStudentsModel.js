@@ -22,15 +22,11 @@ module.exports = {
         return result.rows;
     },   
     
-    //pegar oportunidades de acordo com o filtro
-    async getAreaByTitle(data){
-        const values = [data.title];
-        const query = ` SELECT opportunities.* FROM opportunities
-                        JOIN opportunities_areas ON opportunities.id = opportunities_areas.opportunity_id
-                        JOIN areas ON areas.id = opportunities_areas.area_id
-                        WHERE areas.title = $1
-                        `;
-        const result = await pool.query(query, values);
-        return result.rows;
+    //pegar as áreas de acordo com o filtro
+    async getAreasByTitle(data){
+      const query = ` SELECT * FROM areas WHERE title ILIKE '%' || $1 || '%' `;
+      const values = [data.title.trim()]; //evitar espaços 
+      const result = await pool.query(query, values);
+      return result.rows;
     }
 }
