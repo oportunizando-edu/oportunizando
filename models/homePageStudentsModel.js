@@ -1,0 +1,36 @@
+//Chamar a pool de conexões 
+const pool = require("../config/db");
+
+//Modularizar as funções
+module.exports = {
+    //pegar as informações de acordo com o estudante logado
+    async getAreasByStudentsId(id){
+        const values = [id];
+        const query = `SELECT areas.* FROM areas
+                        JOIN users_areas ON areas.id = users_areas.area_id
+                        WHERE users_areas.user_id = $1`;
+        const result = await pool.query(query, values);
+        //retornar todos os resultados em um array
+        return result.rows;
+    },
+
+    //pegar todas as áreas
+    async getAllAreas(){
+        const query = `SELECT * FROM areas`;
+        const result = await pool.query(query);
+        //retornar todos os resultados em um array
+        return result.rows;
+    },   
+    
+    //pegar oportunidades de acordo com o filtro
+    async getAreaByTitle(data){
+        const values = [data.title];
+        const query = ` SELECT opportunities.* FROM opportunities
+                        JOIN opportunities_areas ON opportunities.id = opportunities_areas.opportunity_id
+                        JOIN areas ON areas.id = opportunities_areas.area_id
+                        WHERE areas.title = $1
+                        `;
+        const result = await pool.query(query, values);
+        return result.rows;
+    }
+}
