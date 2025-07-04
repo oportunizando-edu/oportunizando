@@ -2,9 +2,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-
-//Incialização do banco de dados
-require('./config/db');
+const pool = require('./config/db');
 
 //Definição da views
 app.set('view engine', 'ejs');
@@ -19,9 +17,22 @@ app.use(express.json());
 //Porta para ser usada
 const PORT = process.env.PORT || 3000;
 
-//Avisar que está funcionando
-app.listen( PORT, () =>{
-  console.log("Servidor rodando na porta:", PORT);
-})
+//Verificar se a conexão foi realizada com sucesso
+pool.connect()
+  .then(client => {
+    console.log('Conexão com o banco de dados realizada com sucesso');
+    client.release();
+
+    //Inciar após a conexão com o db
+    app.listen( PORT, () =>{
+      console.log("Servidor rodando na porta:", PORT);
+    })
+  })
+  .catch(err => {
+    console.error('Erro ao se conectar com o banco de dados: ', err);
+    //encerrar o processo
+    process.exit(1);
+  });
+
 
 module.exports = app;
