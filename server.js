@@ -13,6 +13,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Usar o express
 app.use(express.json());
 
+//rotas principais
+app.get('/team', (req, res) => {
+  res.render('team')
+})
+
 //Porta para ser usada
 const PORT = process.env.PORT || 3000;
 
