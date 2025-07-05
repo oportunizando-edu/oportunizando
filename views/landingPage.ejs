@@ -33,7 +33,123 @@
   <body>
 
     <main>
-     
+
+      <!--seção de apresentação-->
+      <div class="relative w-full h-screen flex justify-center items-center shadow-md">
+        <!--Imagem de fundo-->
+        <img src="img/background.png" alt="banner" class=" w-full h-full object-cover">
+
+        <div
+          class="absolute inset-0 max-w-full h-auto flex flex-col md:flex-row place-content-between justify-center items-center mx-auto self-center ">
+          <img src="img/logo.png" alt="imagem da logo" class=" w-1/2 h-auto">
+          <div
+            class="bg-white  max-h-full rounded-2xl flex flex-col justify-center items-center gap-2 sm:gap-5 p-5 sm:w-1/2 m-8 h-auto sm:py-8">
+            <h1 class="text-2xl sm:text-3xl md:text-4xl text-center leading-[2]">
+              É hora de mergulhar no mundo de <br> possibilidades para seu futuro.
+            </h1>
+            <h1 class="text-2xl sm:text-3xl md:text-4xl text-center leading-[2]">A <b>Oportunizando</b> te permite <b>sonhar</b> e <b>conquistar</b>!</h1>
+
+            <button class="mx-auto d-block" style="background: #F3CF64; color: #4A2E88; font-weight: bold; font-size: 1.25rem; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.10); padding: 16px 0; border: none; margin-top: 32px; width: 375.65px;">
+              Começar agora
+            </button>
+            <!-- Barra de pesquisa -->
+            <form class="mx-auto mt-4" style="width: 375.65px;">
+              <div style="position: relative;">
+                <input type="text" placeholder="Pesquisar oportunidades" style="width: 100%; font-size: 14.78px; color: #999; border: none; outline: none; background: #fff; border-radius: 16px; box-shadow: 0 4px 16px rgba(0,0,0,0.10); padding: 20px 48px 20px 24px;">
+                <span style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); color: #aaa; font-size: 1.3rem;">
+                  <i class="fas fa-search"></i>
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!--Quem somos-->
+      <div class="container my-5" style="max-width: 1200px;">
+        <div class="row align-items-center">
+          <!-- Texto à esquerda -->
+          <div class="col-md-6" style="padding-right: 60px; padding-left: 8px;">
+            <h1 style="color: #5F37B5; font-size: 2.8rem; font-weight: bold; margin-bottom: 24px;">Quem somos:</h1>
+            <p style="font-size: 18.78px; line-height: 1.5; margin-bottom: 18px;">
+              A plataforma Oportunizando surge para transformar um desafio nacional em solução concreta. Nossa plataforma nasce da dor que nossa equipe explorou e pesquisou durante o Eduhackathon – evento promovido pelo Instituto Saber Social em parceria com Edugital, EBAC e Education for Sharing: a falta de acesso democrático às oportunidades dos sonhos no Brasil.
+            </p>
+            <p style="font-size: 18.78px; line-height: 1.5;">
+              Somos a <b>ponte que conecta jovens periféricos de todas as classes sociais às oportunidades que podem mudar seus destinos.</b> Democratizamos o acesso a experiências científicas, empreendedoras, profissionais e técnicas, com uma abordagem que une apoio completo e acessibilidade. Aqui, cada talento encontra o caminho para realizar seus sonhos.
+            </p>
+          </div>
+          <!-- Imagem à direita -->
+          <div class="col-md-6 d-flex justify-content-center align-items-center" style="min-height: 400px;">
+            <img src="/img/imagem-quem-somos.png" alt="Jovens comemorando" style="height: 100%; max-height: 450px; width: 711.3px; max-width: 100%; display: block; object-fit: cover;">
+          </div>
+        </div>
+        <!-- Botões -->
+        <div class="row mt-5 justify-content-center">
+          <div class="col-12 d-flex justify-content-center gap-3 flex-nowrap">
+            <a href="#" class="btn" style="background: #F3CF64; color: #5F37B5; font-size: 18.78px; font-weight: 400; border-radius: 10px; box-shadow: 0 4px 8px rgba(95,55,181,0.08); padding: 20px 24px; border: none; min-width: 200px; white-space: nowrap;">Conheça nosso time</a>
+            <a href="#" class="btn" style="background: #F3CF64; color: #5F37B5; font-size: 18.78px; font-weight: 400; border-radius: 10px; box-shadow: 0 4px 8px rgba(95,55,181,0.08); padding: 20px 24px; border: none; min-width: 200px; white-space: nowrap;">Oportunizando para instituições</a>
+            <a href="#" class="btn" style="background: #F3CF64; color: #5F37B5; font-size: 18.78px; font-weight: 400; border-radius: 10px; box-shadow: 0 4px 8px rgba(95,55,181,0.08); padding: 20px 24px; border: none; min-width: 200px; white-space: nowrap;">Oportunizando para oportunidades</a>
+            <a href="#" class="btn" style="background: #F3CF64; color: #5F37B5; font-size: 18.78px; font-weight: 400; border-radius: 10px; box-shadow: 0 4px 8px rgba(95,55,181,0.08); padding: 20px 24px; border: none; min-width: 200px; white-space: nowrap;">Oportunizando para estudantes</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Seção: Explore as categorias -->
+      <div style="max-width: 1200px; margin: 0 auto;" class="my-5">
+        <h2 style="color: #4A2E88; font-size: 2.8rem; font-weight: bold; margin-bottom: 40px;">
+          Explore as categorias:
+        </h2>
+        <div class="d-flex align-items-center" style="width: 100%;">
+          <!-- Botão seta esquerda -->
+          <button id="scrollLeft" class="btn me-3" style="z-index:2; background: #F3CF64; border-radius: 50%; width: 64px; height: 64px; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <i class="fas fa-chevron-left" style="color: #6C3FC5; font-size: 2rem;"></i>
+          </button>
+          <!-- Carrossel horizontal -->
+          <div id="categoriasScroll" class="d-flex overflow-auto gap-4 flex-grow-1" style="scroll-behavior: smooth; scrollbar-width: none; -ms-overflow-style: none;">
+            <style>
+              #categoriasScroll::-webkit-scrollbar { display: none; }
+            </style>
+            <!-- Card 1 -->
+            <a href="/categoria/estagios-regulares" class="text-decoration-none flex-shrink-0" style="max-width: 320px; width: 320px;">
+              <div style="background: #6C3FC5; border-radius: 12px; padding: 32px 16px 24px 16px; text-align: center;">
+                <img src="/img/categoria1.jpg" alt="Estágios regulares" style="width: 100%; height: 160px; object-fit: cover; border-radius: 12px;">
+                <div class="mt-4" style="color: #fff; font-size: 1.5rem; font-weight: bold;">Estágios regulares</div>
+                <div class="mt-2" style="color: #E0D9F6; font-size: 1.25rem; font-weight: 600;">230+ oportunidades</div>
+              </div>
+            </a>
+            <!-- Card 2 -->
+            <a href="/categoria/estagios-ferias" class="text-decoration-none flex-shrink-0" style="max-width: 320px; width: 320px;">
+              <div style="background: #6C3FC5; border-radius: 12px; padding: 32px 16px 24px 16px; text-align: center;">
+                <img src="/img/categoria2.jpg" alt="Estágios de férias" style="width: 100%; height: 160px; object-fit: cover; border-radius: 12px;">
+                <div class="mt-4" style="color: #fff; font-size: 1.5rem; font-weight: bold;">Estágios de férias</div>
+                <div class="mt-2" style="color: #E0D9F6; font-size: 1.25rem; font-weight: 600;">20+ oportunidades</div>
+              </div>
+            </a>
+            <!-- Card 3 -->
+            <a href="/categoria/iniciacao-cientifica" class="text-decoration-none flex-shrink-0" style="max-width: 320px; width: 320px;">
+              <div style="background: #6C3FC5; border-radius: 12px; padding: 32px 16px 24px 16px; text-align: center;">
+                <img src="/img/categoria3.jpg" alt="Iniciação Científica" style="width: 100%; height: 160px; object-fit: cover; border-radius: 12px;">
+                <div class="mt-4" style="color: #fff; font-size: 1.5rem; font-weight: bold;">Iniciação Científica</div>
+                <div class="mt-2" style="color: #E0D9F6; font-size: 1.25rem; font-weight: 600;">410+ oportunidades</div>
+              </div>
+            </a>
+            <!-- Card 4 -->
+            <a href="/categoria/hackathon" class="text-decoration-none flex-shrink-0" style="max-width: 320px; width: 320px;">
+              <div style="background: #6C3FC5; border-radius: 12px; padding: 32px 16px 24px 16px; text-align: center;">
+                <img src="/img/categoria4.jpg" alt="Hackathon" style="width: 100%; height: 160px; object-fit: cover; border-radius: 12px;">
+                <div class="mt-4" style="color: #fff; font-size: 1.5rem; font-weight: bold;">Hackathon</div>
+                <div class="mt-2" style="color: #E0D9F6; font-size: 1.25rem; font-weight: 600;">560+ oportunidades</div>
+              </div>
+            </a>
+            <!-- Adicione mais cards se quiser -->
+          </div>
+          <!-- Botão seta direita -->
+          <button id="scrollRight" class="btn ms-3" style="z-index:2; background: #F3CF64; border-radius: 50%; width: 64px; height: 64px; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <i class="fas fa-chevron-right" style="color: #6C3FC5; font-size: 2rem;"></i>
+          </button>
+        </div>
+      </div>
+
     </main>
   </body>
 
@@ -44,3 +160,14 @@
     </body>
 
 </html>
+
+<script>
+  // Scroll suave para o carrossel
+  const scrollDiv = document.getElementById('categoriasScroll');
+  document.getElementById('scrollLeft').onclick = () => {
+    scrollDiv.scrollBy({ left: -340, behavior: 'smooth' });
+  };
+  document.getElementById('scrollRight').onclick = () => {
+    scrollDiv.scrollBy({ left: 340, behavior: 'smooth' });
+  };
+</script>
