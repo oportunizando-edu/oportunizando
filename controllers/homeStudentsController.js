@@ -4,7 +4,7 @@ module.exports = {
     //Áreas de acordo com o id do estudante com uma condicional caso não tenha nenhum selecionado
     async getAreasByStudentsId(req,res){
         try{
-            const userId = req.session.user.id //depois alterar com a maneira correta de conseguir o id do usuário
+            const userId = req.session.user?.id //depois alterar com a maneira correta de conseguir o id do usuário
             const areas = await homeStudentsModel.getAreasByStudentsId(userId);
 
             if(areas.length === 0){
