@@ -13,6 +13,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Usar o express
 app.use(express.json());
 
+//Rota de visualização
+const opportunitiesByAreaRoutes = require('./routes/opportunitiesByArea');
+app.use('/opportunities/:areaId', )
+
 //Porta para ser usada
 const PORT = process.env.PORT || 3000;
 
