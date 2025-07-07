@@ -4,7 +4,7 @@ const opportunitiesModel = require('../models/opportunitiesModel');
 exports.getOpportunitiesPage = async(req, res) => {
     try{
         const areaId = req.params.areaId;
-        const opportunities = await opportunitiesModel(areaId);
+        const opportunities = await opportunitiesModel.getOpportunitiesByArea(areaId);
         res.render('opportunitiesByArea', {
             opportunities,
         })
