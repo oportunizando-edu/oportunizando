@@ -15,7 +15,6 @@ module.exports = {
                 areasByStudent,
                 areas,
                 areasByTitle: null,
-                message: null
             });
         } catch (err) {
             res.status(500).json({ message: err.message });
@@ -32,17 +31,13 @@ module.exports = {
                 homeStudentsModel.getAreasByStudentsId(userId),
                 homeStudentsModel.getAllAreas(),
                 homeStudentsModel.getAreasByTitle(req.body.area)
-            ]);            
-            let message = null;
-            if (!areasByTitle.length) {
-                message = 'Nenhuma área encontrada';
-            }
+            ]);  
+        
             res.render('homeStudents', {
                 isLogged,
                 areasByStudent,
                 areas,
-                areasByTitle,
-                message
+                areasByTitle: (areasByTitle.length === 0) ? null : areasByTitle,
             });
         } catch (err) {
             res.status(500).json({ message: err.message });

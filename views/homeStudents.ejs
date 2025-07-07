@@ -16,17 +16,6 @@
                 <h1 class="w-1/2 text-3xl text-[#5F37B5]">
                     Minhas Categorias
                 </h1>
-                <div class="sm:w-2/6 flex justify-between items-center  bg-[#5F37B5] text-white rounded-md p-4 sm:p-6 py-8 gap-2">
-                    <span class="w-1/6">
-                        Filtrar
-                    </span>
-                    <select class="w-5/6 bg-white text-black text-opacity-50 p-2 py-4 rounded-lg">
-                        <option value="none">Categoria</option>
-                        <% areasByStudent.forEach( area => { %>
-                            <option value="<%= area.title%>"><%= area.title.charAt(0).toUpperCase() + area.title.slice(1)%></option>
-                        <% }) %>
-                    </select>
-                </div>
             </div>
 
             <div class="flex flex-wrap justify-evenly sm:justify-start mx-8 gap-4 my-12">
@@ -56,6 +45,7 @@
                 <form action="/homeStudents" method="POST" class="w-5/6">
                     <select name="area" onchange="this.form.submit()" class="w-full bg-white text-black text-opacity-50 p-2  rounded-lg">
                         <option value="none">Categoria</option>
+                        <option value="none">Todos</option>
                         <% areas.forEach( area => { %>
                             <option value="<%= area.title%>"><%= area.title.charAt(0).toUpperCase() + area.title.slice(1)%></option>
                         <% }) %> 
