@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const pool = require('./config/db');
+const session = require('express-session');
 
 //Definição da views
 app.set('view engine', 'ejs');
@@ -13,6 +14,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Usar o express
 app.use(express.json());
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // true em HTTPS
+    maxAge: 24000 * 60 * 60 // 24 horas
+  }
+}));
+
+
+//Rota do homeStudent
+const homeStudentRoutes = require('./routes/homeStudentsRoutes');
+app.use('/homeStudents', homeStudentRoutes);
 
 //Porta para ser usada
 const PORT = process.env.PORT || 3000;

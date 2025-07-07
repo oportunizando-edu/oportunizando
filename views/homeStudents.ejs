@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Estudantes</title>
+    <!--Adicionar o Tailwind usando o cdn-->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    
+    <!--Seção de minhas categorias-->
+    <section>
+        <div class="flex justify-between m-8 flex-wrap">
+            <h1 class="w-full text-3xl text-[#5F37B5]">
+                Minhas Categorias
+            </h1>
+            <div class="w-full flex justify-evenly flex-wrap">
+                <span>
+                    Filtrar
+                </span>
+                <select>
+                    <option value="none">Categoria</option>
+                    <% if(areasByStudent) {%>
+                    <% areasByStudent.forEach( area => { %>
+                        <option value="<%= area.title%>"><%= area.title.charAt(0).toUpperCase() + area.title.slice(1)%></option>
+                    <% }) %>
+                    <% }else {%>
+                        <option value="none"><%= message%></option>
+                    <%}%>
+                </select>
+            </div>
+        </div>
+    </section>
+
+
+</body>
+</html>
