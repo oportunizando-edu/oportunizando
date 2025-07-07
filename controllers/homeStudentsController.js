@@ -31,8 +31,8 @@ module.exports = {
             const [areasByStudent, areas, areasByTitle] = await Promise.all([
                 homeStudentsModel.getAreasByStudentsId(userId),
                 homeStudentsModel.getAllAreas(),
-                homeStudentsModel.getAreasByTitle(req.body)
-            ]);
+                homeStudentsModel.getAreasByTitle(req.body.area)
+            ]);            
             let message = null;
             if (!areasByTitle.length) {
                 message = 'Nenhuma área encontrada';

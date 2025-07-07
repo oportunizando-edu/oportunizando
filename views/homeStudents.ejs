@@ -53,23 +53,34 @@
                 <span class="w-1/6">
                     Filtrar
                 </span>
-                <select class="w-5/6 bg-white text-black text-opacity-50 p-2  rounded-lg">
-                    <option value="none">Categoria</option>
-                    <% areas.forEach( area => { %>
-                        <option value="<%= area.title%>"><%= area.title.charAt(0).toUpperCase() + area.title.slice(1)%></option>
-                    <% }) %> 
-                </select>
+                <form action="/homeStudents" method="POST" class="w-5/6">
+                    <select name="area" onchange="this.form.submit()" class="w-full bg-white text-black text-opacity-50 p-2  rounded-lg">
+                        <option value="none">Categoria</option>
+                        <% areas.forEach( area => { %>
+                            <option value="<%= area.title%>"><%= area.title.charAt(0).toUpperCase() + area.title.slice(1)%></option>
+                        <% }) %> 
+                    </select>
+                </form>
             </div>
         </div>
 
         <div class="flex flex-wrap justify-evenly sm:justify-start mx-8 gap-4 my-12">
-            <% areas.forEach( area => { %>
-                <a href="/opportunities/<%= area.id%>" class="rounded-md bg-[#5F37B5] text-white font-bold p-12 sm:p-24 py-8 sm:py-12 shadow-md sm:w-1/4 flex justify-center border-yellow-200 border-[3px]">
-                    <p class="text-center">
-                    <%= area.title.charAt(0).toUpperCase() + area.title.slice(1)%>
-                    </p>
-                </a>
-            <% })%>
+            <% if(areasByTitle) {%>
+                     <% areasByTitle.forEach( area => { %>
+                    <a href="/opportunities/<%= area.id%>" class="rounded-md bg-[#5F37B5] text-white font-bold p-12 sm:p-24 py-8 sm:py-12 shadow-md sm:w-1/4 flex justify-center border-yellow-200 border-[3px]">
+                        <p class="text-center">
+                        <%= area.title.charAt(0).toUpperCase() + area.title.slice(1)%>
+                        </p>
+                    </a>
+                    <%})%>
+            <%} else {%>
+                <% areas.forEach( area => { %>
+                    <a href="/opportunities/<%= area.id%>" class="rounded-md bg-[#5F37B5] text-white font-bold p-12 sm:p-24 py-8 sm:py-12 shadow-md sm:w-1/4 flex justify-center border-yellow-200 border-[3px]">
+                        <p class="text-center">
+                        <%= area.title.charAt(0).toUpperCase() + area.title.slice(1)%>
+                        </p>
+                    </a>
+            <% })}%>
         </div>
     </section>
 

@@ -14,6 +14,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Usar o express
 app.use(express.json());
+
+//Usar o middleware de ler requisições de post
+app.use(express.urlencoded({extended: true}))
+
+//Usar o session
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
@@ -23,7 +28,6 @@ app.use(session({
     maxAge: 24000 * 60 * 60 // 24 horas
   }
 }));
-
 
 //Rota do homeStudent
 const homeStudentRoutes = require('./routes/homeStudentsRoutes');

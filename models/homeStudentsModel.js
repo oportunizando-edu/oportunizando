@@ -23,9 +23,9 @@ module.exports = {
     },   
     
     //pegar as áreas de acordo com o filtro
-    async getAreasByTitle(data){
+    async getAreasByTitle(title){
       const query = ` SELECT * FROM areas WHERE title ILIKE '%' || $1 || '%' `;
-      const values = [data.title.trim()]; //evitar espaços 
+      const values = [title.trim()]; //evitar espaços 
       const result = await pool.query(query, values);
       return result.rows;
     }
