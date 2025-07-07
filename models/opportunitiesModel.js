@@ -9,5 +9,13 @@ module.exports = {
 
         const result = await pool.query(query, values);
         return result.rows;
+    },
+
+    async getAreaTitle(id){
+        const query = `SELECT title FROM areas WHERE id = $1`;
+        const values = [id];
+
+        const result = await pool.query(query, values);
+        return result.rows[0];
     }
 }
