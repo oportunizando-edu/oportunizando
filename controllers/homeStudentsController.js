@@ -5,11 +5,13 @@ module.exports = {
     async getHomePage(req, res) {
         try {
             const userId = req.session.user?.id;
+            const isLogged = !!req.session?.user;
             const [areasByStudent, areas] = await Promise.all([
                 homeStudentsModel.getAreasByStudentsId(userId),
                 homeStudentsModel.getAllAreas()
             ]);
             res.render('homeStudents', {
+                isLogged,
                 areasByStudent,
                 areas,
                 areasByTitle: null,
@@ -24,6 +26,8 @@ module.exports = {
     async searchByTitle(req, res) {
         try {
             const userId = req.session.user?.id;
+            const isLogged = !!req.session?.user;
+
             const [areasByStudent, areas, areasByTitle] = await Promise.all([
                 homeStudentsModel.getAreasByStudentsId(userId),
                 homeStudentsModel.getAllAreas(),
@@ -34,6 +38,7 @@ module.exports = {
                 message = 'Nenhuma área encontrada';
             }
             res.render('homeStudents', {
+                isLogged,
                 areasByStudent,
                 areas,
                 areasByTitle,

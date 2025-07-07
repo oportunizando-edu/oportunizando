@@ -11,15 +11,15 @@
     
     <!--Seção de minhas categorias-->
     <section>
-        <div class="flex justify-between m-8 flex-wrap">
-            <h1 class="w-full text-3xl text-[#5F37B5]">
+        <div class="flex justify-between m-8 flex flex-col sm:flex-row gap-4">
+            <h1 class="w-1/2 text-3xl text-[#5F37B5]">
                 Minhas Categorias
             </h1>
-            <div class="w-full flex justify-evenly flex-wrap">
-                <span>
+            <div class="sm:w-2/6 flex justify-between items-center  bg-[#5F37B5] text-white rounded-md p-4 sm:p-6 py-8 gap-2">
+                <span class="w-1/6">
                     Filtrar
                 </span>
-                <select>
+                <select class="w-5/6 bg-white text-black text-opacity-50 p-2 py-4 rounded-lg">
                     <option value="none">Categoria</option>
                     <% if(areasByStudent) {%>
                     <% areasByStudent.forEach( area => { %>
@@ -33,6 +33,29 @@
         </div>
     </section>
 
+    <!--Seção de explorar categorias-->
+    <section>
+        <div class="flex justify-between m-8 flex flex-col sm:flex-row gap-4">
+            <h1 class="w-1/2 text-3xl text-[#5F37B5]">
+                Explorar
+            </h1>
+            <div class="sm:w-2/6 flex justify-between items-center  bg-[#5F37B5] text-white rounded-md p-4 sm:p-6 py-8 gap-2">
+                <span class="w-1/6">
+                    Filtrar
+                </span>
+                <select class="w-5/6 bg-white text-black text-opacity-50 p-2 py-4 rounded-lg">
+                    <option value="none">Categoria</option>
+                    <% if(areas) {%>
+                    <% areas.forEach( area => { %>
+                        <option value="<%= area.title%>"><%= area.title.charAt(0).toUpperCase() + area.title.slice(1)%></option>
+                    <% }) %>
+                    <% }else {%>
+                        <option value="none"><%= message%></option>
+                    <%}%>
+                </select>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
