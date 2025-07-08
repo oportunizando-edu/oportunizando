@@ -4,6 +4,9 @@ const app = express();
 const path = require('path');
 const pool = require('./config/db');
 
+//Usar o express com json
+app.use(express.json());
+
 //Definição da views
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -11,10 +14,13 @@ app.set('views', path.join(__dirname, 'views'));
 //Definição do public
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Usar o express
-app.use(express.json());
 
-//rotas principais
+//importando caminho das rotas principais
+const userRoutes = require('./routes/userRoutes');
+
+//Definindo rotas principais
+app.get('/', userRoutes);
+
 app.get('/team', (req, res) => {
   res.render('team')
 })
