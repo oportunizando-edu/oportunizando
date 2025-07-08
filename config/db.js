@@ -12,6 +12,11 @@ const pool = new Pool({
   ssl: isSSL ? { rejectUnauthorized: false } : false,
 });
 
+// Captura erros inesperados no pool
+pool.on('error', (err) => {
+  console.error('Erro inesperado no cliente do pool:', err);
+});
+
 module.exports = {
   query: (text, params) => pool.query(text, params),
   connect: () => pool.connect(),

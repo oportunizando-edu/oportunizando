@@ -16,6 +16,6 @@ module.exports = {
         const values = [id];
 
         const result = await pool.query(query, values);
-        return result.rows[0];
+        return result.rows[0].title;
     }
 }
