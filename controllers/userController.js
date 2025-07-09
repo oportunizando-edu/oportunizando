@@ -1,4 +1,4 @@
-const userModel = require('../controller/userModel');
+const userModel = require('../models/userModel');
 
 //Criar novo usuário
 exports.createUser = async(req, res)=>{
@@ -6,12 +6,13 @@ exports.createUser = async(req, res)=>{
 
     try{
         await userModel.createUser(name, email, password);
-        res.redirect('/login');
+        res.status(201).json({ message: 'Usuário criado com sucesso' });
+    /*     res.redirect('/login'); */
 
-    
     }
     catch(err){
-        res.status(400).render('/register', {erro: err.messae});
+        res.status(400).json({ erro: err.message });
+     /*    res.status(400).render('/create', {erro: err.message}); */
     }
 };
 
@@ -20,24 +21,26 @@ exports.loginUser = async(req, res)=>{
     const {email, password} = req.body;
 
     try{
-        const user = await userModel.loginUser(email);
+    const user = await userModel.loginUser(email);
+
     if(!user){
-        return res.status(401).render('/login', {erro: 'Usuário não encontrado'});
+        return res.status(401).json({message: 'Usuário não encontrado'});
     }
     if(user.password !==password){
-        return res.status(401).render('pages/login', {erro: 'Senha incorreta'});
+        return res.status(401).json({message: 'Senha incorreta'});
     }
 
     //SALVA A SESSÃO antes de redirecionar
     req.session.user = {
-        id_user: user.id,
-        nome: user.name
+        id: user.id,
+        nome: user.name,
+        role: user.role
     }
-        res.redirect('/')
+ /*    res.redirect('/') */
 
     }
     catch (err) {
-    res.status(500).render('/login', { erro: 'Erro interno no servidor' });
+    res.status(400).json({ erro: err.message });
   }
 
 }
@@ -48,11 +51,11 @@ exports.deleteUser = async (req, res)=>{
     try{
         deletedUser = await userModel.deleteUser(id);
 
-        if (!deletedUser) {
+    if (!deletedUser) {
       return res.status(404).json({ erro: 'Usuário não encontrado' });
     }
 
-        res.status(200).json({ mensagem: 'Usuário deletado com sucesso', user: deletedUser });
+    res.status(200).json({ mensagem: 'Usuário deletado com sucesso', user: deletedUser });
 
     }
     catch(err){

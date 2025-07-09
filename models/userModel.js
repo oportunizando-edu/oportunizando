@@ -10,7 +10,7 @@ exports.createUser = async(name, email, password) => {
     }
 
     //inserindo usuário, caso não exista
-    const result = await pool.query ('INSERT INTO users (name, email, password) values ($1, $2, $3) RETURNING [name, email, password]');
+    const result = await pool.query ('INSERT INTO users (name, email, password) values ($1, $2, $3) RETURNING*', [name, email, password]);
 
     return result.rows[0];
 }
@@ -31,7 +31,7 @@ exports.loginUser = async (email)=>{
 
 //delete user
 exports.deleteUser = async(id)=>{
-    const result = await pool.query('DELETE * FROM users WHERE id = $1 RETURNING *', [id]);
+    const result = await pool.query('DELETE FROM users WHERE id = $1 RETURNING *', [id]);
     
     if (result.rowCount === 0) { //erro se nenhuma linha for afetada no banco
       throw new Error('Usuário não encontrado');

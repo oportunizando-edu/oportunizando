@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 const userRoutes = require('./routes/userRoutes');
 
 //Definindo rotas principais
-app.get('/', userRoutes);
+app.use('/', userRoutes);
 
 app.get('/team', (req, res) => {
   res.render('team')
