@@ -14,6 +14,10 @@ router.get('/opportunities', (req, res) => {
   res.render('opportunities');
 });
 
+router.get('/students', (req, res) => {
+  res.render('students');
+});
+
 // Rota para "Conheça nossos talentos" - redireciona para a seção de histórias de sucesso
 router.get('/talentos', (req, res) => {
   res.redirect('/#historias-sucesso');

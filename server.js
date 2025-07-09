@@ -40,11 +40,6 @@ app.use('/', landingPageRoutes);
   res.render('team')
 }) */
 
-//Rota de visualização
-app.get('/students', (req, res) => {
-  res.render('students');
-});
-
 //Porta para ser usada
 const PORT = process.env.PORT || 3000;
 
