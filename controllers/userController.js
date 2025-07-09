@@ -29,12 +29,13 @@ exports.loginUser = async(req, res)=>{
 
     //SALVA A SESSÃO antes de redirecionar
     req.session.user = {
-        id: user.id,
+        user_id: user.id,
         nome: user.name,
         role: user.role
     }
+    console.log('sessão:', req.session);
     //redireciona para outra rota
-     res.redirect('/interests') 
+    res.redirect('/interestsAll');
 
     } catch (err) {
     res.status(500).render('login', { erro: err });

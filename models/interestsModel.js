@@ -11,6 +11,17 @@ exports.selectAreas = async (user_id, area_ids) => {
     return result.rows;
 };
 
+//Pegar id de todas as áreas
+exports.getAll = async () => {
+  try {
+    const result = await pool.query('SELECT id, title FROM areas ORDER BY id');
+    return result.rows;
+  } 
+  catch (err) {
+    throw new Error('Erro ao buscar áreas de interesse:');
+  }
+};
+
 //atualizarInteressesUsuario
 exports.deleteArea = async (user_id, area_id) => {
     const result = await pool.query('DELETE FROM users_areas WHERE user_id = $1 AND area_id = $2 RETURNING *',    [user_id, area_id]

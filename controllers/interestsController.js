@@ -2,7 +2,7 @@ const interestsModel = require('../models/interestsModel');
 
 //selecionar areas de interesse
 exports.selectAreas = async (req, res) => {
-    const user_id = req.session.user_id; //pega da sessão
+    const user_id = req.session.user?.user_id;//pega da sessão
     const { area_ids } = req.body;
 
   if (!user_id || !Array.isArray(area_ids) || area_ids.length === 0) {
@@ -11,12 +11,21 @@ exports.selectAreas = async (req, res) => {
 
   try {
     const result = await interestsModel.selectAreas(user_id, area_ids);
-    return res.status(201).json({
-      message: 'Áreas de interesse inseridas com sucesso',
-      data: result
-    });
+    return res.status(201).json({ message: 'Áreas de interesse inseridas com sucesso', data: result });
   } catch (err) {
     return res.status(500).json({ erro: err.message });
+  }
+};
+
+// mostrar a tela de seleção de interesses
+exports.renderSelectAreas = async (req, res) => {
+  try {
+    const areas = await interestsModel.getAll();
+    console.log('Áreas retornadas do banco:', areas);
+
+    res.render('interests', { areas });
+  } catch (err) {
+    res.status(500).send('Erro ao carregar áreas de interesse');
   }
 };
 

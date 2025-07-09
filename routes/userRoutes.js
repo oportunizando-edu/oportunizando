@@ -20,7 +20,7 @@ router.get('/createUser', (req, res) => {
 });
 
 router.get('/loginUser', (req, res) => {
-    res.render('login', {erro: null});
+    res.render('login', {erro: null} );
 });
 
 module.exports = router;

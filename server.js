@@ -27,12 +27,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //importando caminho das rotas principais
 const userRoutes = require('./routes/userRoutes');
-/* const interestsRoutes = require('./routes/interestsRoutes');
- */
+const interestsRoutes = require('./routes/interestsRoutes');
+
 //Definindo rotas principais
 app.use('/', userRoutes);
-/* app.use('/', interestsRoutes);
-*/
+app.use('/', interestsRoutes);
+
 
 //Criar rota para team
 /* app.get('/team', (req, res) => {
