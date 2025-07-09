@@ -5,7 +5,7 @@ exports.getOpportunityById = async(id) => {
     const values = [id];
 
     const result = await pool.query(query, values);
-    return result.rows;
+    return result.rows[0];
 };
 //Adicionar uma oportunidade ao usuário
 exports.addOpportunityToStudent = async(userId, opportunityId) => {
