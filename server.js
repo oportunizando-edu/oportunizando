@@ -19,7 +19,6 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
