@@ -3,6 +3,16 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const pool = require('./config/db');
+const session = require('express-session');
+require('dotenv').config();
+
+//definindo sessão
+app.use(session({
+  secret: process.env.SESSION_SECRET,  
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}));
 
 //Usar o express com json
 app.use(express.json());
@@ -13,7 +23,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 //Definição do public
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 //importando caminho das rotas principais
 const userRoutes = require('./routes/userRoutes');
