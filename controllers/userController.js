@@ -24,10 +24,10 @@ exports.loginUser = async(req, res)=>{
     const user = await userModel.loginUser(email);
 
     if(!user){
-        return res.status(401).json({message: 'Usuário não encontrado'});
+        return res.status(401).render('login', {erro: 'Usuário não encontrado'});
     }
     if(user.password !==password){
-        return res.status(401).json({message: 'Senha incorreta'});
+        return res.status(401).render('login', {erro: 'Senha incorreta'});
     }
 
     //SALVA A SESSÃO antes de redirecionar
@@ -39,9 +39,8 @@ exports.loginUser = async(req, res)=>{
     //redireciona para outra rota
      res.redirect('/interests') 
 
-    }
-    catch (err) {
-    res.status(400).json({ erro: err.message });
+    } catch (err) {
+    res.status(500).render('login', { erro: err });
   }
 
 }
@@ -59,9 +58,9 @@ exports.deleteUser = async (req, res)=>{
     res.status(200).json({ mensagem: 'Usuário deletado com sucesso', user: deletedUser });
 
     }
-    catch(err){
-        res.status(500).json({ erro: 'Erro interno no servidor' });
-    }
+    catch (err) {
+    res.status(500).render('login', { erro: 'Erro interno do servidor' });
+}
 }
 
 //logout

@@ -19,12 +19,7 @@ exports.createUser = async(name, email, password) => {
 exports.loginUser = async (email)=>{
 
     const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
-
-    const user = result.rows[0];
-
-    if(!user){
-        throw new Error('Usuário não encontrado');
-    }
+    
     return result.rows[0]; 
 
 }

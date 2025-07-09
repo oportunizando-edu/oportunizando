@@ -30,12 +30,9 @@ const userRoutes = require('./routes/userRoutes');
 /* const interestsRoutes = require('./routes/interestsRoutes');
  */
 //Definindo rotas principais
-/* app.use('/', userRoutes); */
-app.get('/loginUser', (req, res) => {
-  res.render('login')
-})
+app.use('/', userRoutes);
 /* app.use('/', interestsRoutes);
- */
+*/
 
 //Criar rota para team
 /* app.get('/team', (req, res) => {

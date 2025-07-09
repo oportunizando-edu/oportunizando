@@ -6,7 +6,7 @@ const userController = require('../controllers/userController');
 router.post('/createUser', userController.createUser);
 
 //login user
-router.get('/loginUser', userController.loginUser);
+router.post('/loginUser', userController.loginUser);
 
 //logout user
 router.get('/logoutUser', userController.logout);
@@ -15,12 +15,12 @@ router.get('/logoutUser', userController.logout);
 router.delete('/deleteUser', userController.deleteUser);
 
 //views - podem ser renderizadas dentro das funções do controller tambem
-router.get('createUser', (req, res) => {
-    res.render('register')
+router.get('/createUser', (req, res) => {
+    res.render('register', {erro: null})
 });
 
-/* router.get('loginUser', (req, res) => {
-    res.render('login')
-}); */
+router.get('/loginUser', (req, res) => {
+    res.render('login', {erro: null});
+});
 
 module.exports = router;
