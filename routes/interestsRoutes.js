@@ -1,16 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const oppController = require('../controllers/interestsController');
 
-const UserRepository = require('../repositories/userRepository');
-const UserService = require('../services/userService');
-const UserController = require('../controllers/userController');
+//selecionar interesses
+router.post('/interests', oppController.selectAreas);
 
-const controller = new UserController(new UserService(new UserRepository()));
-
-router.get('/', controller.getAllUsers.bind(controller));
-router.get('/:id', controller.getUserById.bind(controller));
-router.post('/', controller.createUser.bind(controller));
-router.put('/:id', controller.updateUser.bind(controller));
-router.delete('/:id', controller.deleteUser.bind(controller));
+/* //mostrar oportunidades baseadas nos interesses
+router.get('/myOpportunities', oppController.getOpportunitiesByUser);
+ */
+//apagar area de interesse
+router.delete('/interests', oppController.deleteArea);
 
 module.exports = router;

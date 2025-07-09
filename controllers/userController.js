@@ -7,7 +7,7 @@ exports.createUser = async(req, res)=>{
     try{
         await userModel.createUser(name, email, password);
         res.status(201).json({ message: 'Usuário criado com sucesso' });
-    /*     res.redirect('/login'); */
+        res.redirect('/login');
 
     }
     catch(err){
@@ -36,7 +36,8 @@ exports.loginUser = async(req, res)=>{
         nome: user.name,
         role: user.role
     }
- /*    res.redirect('/') */
+    //redireciona para outra rota
+     res.redirect('/interests') 
 
     }
     catch (err) {

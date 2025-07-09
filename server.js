@@ -3,6 +3,10 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const pool = require('./config/db');
+//interpretar dados de formulários HTML (application/x-www-form-urlencoded)
+app.use(express.urlencoded({ extended: true }));
+//Usar o express com json
+app.use(express.json());
 const session = require('express-session');
 require('dotenv').config();
 
@@ -14,9 +18,6 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-//Usar o express com json
-app.use(express.json());
-
 //Definição da views
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
@@ -26,13 +27,20 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //importando caminho das rotas principais
 const userRoutes = require('./routes/userRoutes');
-
+/* const interestsRoutes = require('./routes/interestsRoutes');
+ */
 //Definindo rotas principais
-app.use('/', userRoutes);
-
-app.get('/team', (req, res) => {
-  res.render('team')
+/* app.use('/', userRoutes); */
+app.get('/loginUser', (req, res) => {
+  res.render('login')
 })
+/* app.use('/', interestsRoutes);
+ */
+
+//Criar rota para team
+/* app.get('/team', (req, res) => {
+  res.render('team')
+}) */
 
 //Porta para ser usada
 const PORT = process.env.PORT || 3000;

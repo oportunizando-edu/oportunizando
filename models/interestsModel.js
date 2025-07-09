@@ -1,6 +1,5 @@
 const pool = require('../config/db')
 
-
 //mostrar areas de interesse dos estudantes - users_areas
 
 //inserir areas de interesse user_areas
@@ -13,7 +12,7 @@ exports.selectAreas = async (user_id, area_ids) => {
 };
 
 //atualizarInteressesUsuario
-exports.deleteAreas = async (user_id, area_id) => {
+exports.deleteArea = async (user_id, area_id) => {
     const result = await pool.query('DELETE FROM users_areas WHERE user_id = $1 AND area_id = $2 RETURNING *',    [user_id, area_id]
   );
 
@@ -23,9 +22,7 @@ exports.deleteAreas = async (user_id, area_id) => {
 
   return result.rows[0];
 };
-
-
-
+/* 
 //mostrar oportunidades baseadas nos interesses
 exports.getOpportunitiesByUser = async (user_id) => {
   const result = await pool.query(`
@@ -37,3 +34,4 @@ exports.getOpportunitiesByUser = async (user_id) => {
 
   return result.rows;
 };
+ */
