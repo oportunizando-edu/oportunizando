@@ -42,6 +42,7 @@ app.use('/', interestsRoutes);
 
   app.use(express.json());
 
+  const PORT = 3000;
 //Verificar se a conexão foi realizada com sucesso
 pool.connect()
   .then(client => {
