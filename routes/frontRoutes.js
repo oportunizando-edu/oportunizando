@@ -10,4 +10,8 @@ router.get('/team', (req, res) => {
   res.render('team');
 });
 
+router.get('/opportunities', (req, res) => {
+  res.render('opportunities');
+});
+
 module.exports = router; 
