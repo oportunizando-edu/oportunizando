@@ -6,13 +6,10 @@ exports.createUser = async(req, res)=>{
 
     try{
         await userModel.createUser(name, email, password);
-        res.status(201).json({ message: 'Usuário criado com sucesso' });
-        res.redirect('/login');
-
+        res.status(201).redirect('/loginUser');
     }
     catch(err){
-        res.status(400).json({ erro: err.message });
-     /*    res.status(400).render('/create', {erro: err.message}); */
+        res.status(400).render('createUser', {erro: err.message});
     }
 };
 

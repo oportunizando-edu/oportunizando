@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="min-h-screen flex flex-col md:flex-row">
     <!-- lado esquerdo com imagem -->
-     <div class="w-full w: w-1/2 h-64 md:h-screen">
-        <img src="/images/loginIMG.png" alt="Estudantes sorrindo" class="object-cover w-full h-full"/>
-     </div>
+    <div class="w-full md: w-1/2 h-64 md:h-screen">
+        <img src="/images/loginIMG.png" alt="Estudantes sorrindo" class="object-cover w-full h-full" />
+    </div>
+
     <!-- Lado direito com formulário -->
     <div class="w-full md: w-1/2 flex flex-col items-center justify-center p-6 md:p-10">
         <!-- logo -->
@@ -18,17 +21,126 @@
 
         <!-- Mensagem de erro -->
         <% if (erro) { %>
-        <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4"><%= erro %></div>
-        <% } %>
-
-        <!-- formulário -->
-        <form action="/createUser" method="POST" class="w-full max-w-sm space-y-4">
-            <div>
-                <input type="" name="" placeholder="" required/>
+            <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4">
+                <%= erro %>
             </div>
+            <% } %>
 
-        </form>
+                <!-- formulário -->
+                <form action="/createUser" method="POST" onsubmit="return validarSenhas()"
+                    class="w-full max-w-sm space-y-4">
+
+                    <!-- email -->
+                    <div
+                        class="flex border border-gray-300 items-center rounded px-3 py-2 w-full focus-within:ring-2 focus-within:ring-purple-500 ">
+                        <input type="email" name="email" placeholder="E-mail" required
+                            class="focus:outline-none flex-grow "/>
+
+                        <img src="/images/gmailIcon.svg" alt="ícone de email" class="w-5 h-5 ml-3" />
+
+                    </div>
+
+                    <!-- password -->
+                    <div
+                        class="flex border border-gray-300 items-center rounded px-3 py-2 w-full focus-within:ring-2 focus-within:ring-purple-500">
+                        <input type="password" id="password" name="password" placeholder="Senha" required
+                            class="focus:outline-none flex-grow" />
+                        <button type="button" id="passwordButton" class="ml-3">
+                            <img src="/images/passwordIcon.svg" alt="mostrar senha" class="w-5 h-5" id="img1" />
+                            <img src="/images/password1Icon.svg" alt="esconder senha" class="w-5 h-5 hidden"
+                                id="img2" />
+                        </button>
+                    </div>
+
+                    <script>
+                        const passwordInput = document.getElementById('password');
+                        const passwordButton = document.getElementById('passwordButton');
+                        const img1 = document.getElementById('img1'); // ícone olho fechado (mostrar)
+                        const img2 = document.getElementById('img2'); // ícone olho aberto (esconder)
+
+                        passwordButton.addEventListener('click', () => {
+                            if (passwordInput.type === 'password') {
+                                passwordInput.type = 'text';
+                                img1.classList.add('hidden');
+                                img2.classList.remove('hidden');
+                            }
+                            else {
+                                passwordInput.type = 'password';
+                                img1.classList.remove('hidden');
+                                img2.classList.add('hidden');
+                            }
+                        });
+                    </script>
+
+                    <!-- confirm password -->
+                    <div
+                        class="flex border border-gray-300 items-center rounded px-3 py-2 w-full focus-within:ring-2 focus-within:ring-purple-500">
+                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar senha"
+                            required class="focus:outline-none flex-grow" />
+                        <button type="button" id="confirmPasswordButton" class="ml-3">
+                            <img src="/images/passwordIcon.svg" alt="mostrar senha" class="w-5 h-5" id="img3" />
+                            <img src="/images/password1Icon.svg" alt="esconder senha" class="w-5 h-5 hidden"
+                                id="img4" />
+                        </button>
+                    </div>
+
+                    <script>
+                        const passwordInput1 = document.getElementById('confirmPassword');
+                        const passwordButton1 = document.getElementById('confirmPasswordButton');
+                        const img3 = document.getElementById('img3'); // ícone olho fechado (mostrar)
+                        const img4 = document.getElementById('img4'); // ícone olho aberto (esconder)
+
+                        passwordButton1.addEventListener('click', () => {
+                            if (passwordInput1.type === 'password') {
+                                passwordInput1.type = 'text';
+                                img3.classList.add('hidden');
+                                img4.classList.remove('hidden');
+                            }
+                            else {
+                                passwordInput1.type = 'password';
+                                img3.classList.remove('hidden');
+                                img4.classList.add('hidden');
+                            }
+                        });
+                    </script>
+                    <script>
+                        function validarSenhas() {
+                            const senha = document.getElementById('password').value;
+                            const confirmarSenha = document.getElementById('confirmPassword').value;
+                            const erro = document.getElementById('senhaErro');
+
+                            if (senha !== confirmarSenha) {
+                                erro.classList.remove('hidden');
+                                return false; // impede envio
+                            }
+
+                            erro.classList.add('hidden');
+                            return true; // permite envio
+                        }
+                    </script>
+
+                    <p id="senhaErro" class="text-red-500 text-sm mt-2 hidden">As senhas não coincidem.</p>
+
+
+                    <!-- user name -->
+                    <div
+                        class="flex border border-gray-300 items-center rounded px-3 py-2 w-full focus-within:ring-2 focus-within:ring-purple-500 ">
+                        <input type="text" name="name" placeholder="Nome" required class="focus:outline-none flex-grow "/>
+
+                        <img src="/images/personIcon.svg" alt="ícone de email" class="w-5 h-5 ml-3"/>
+
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-purple-800 text-white py-2 rounded hover:bg-purple-900 transition">Cadastrar
+                    </button>
+                </form>
+
+                <!-- Link para login -->
+                <p class="text-sm mt-4 text-center">
+                    Já possui conta? <a href="/loginUser" class="text-purple-700 hover:underline">Entrar</a>
+                </p>
     </div>
-    
 </body>
+
 </html>
