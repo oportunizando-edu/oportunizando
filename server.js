@@ -1,7 +1,8 @@
-//Definição de constantes
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const path = require('path');
+
 const pool = require('./config/db');
 //interpretar dados de formulários HTML (application/x-www-form-urlencoded)
 app.use(express.urlencoded({ extended: true }));
@@ -18,11 +19,11 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-//Definição da views
+
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-//Definição do public
+// Serve static files from public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
 //importando caminho das rotas principais
@@ -39,8 +40,7 @@ app.use('/', interestsRoutes);
   res.render('team')
 }) */
 
-//Porta para ser usada
-const PORT = process.env.PORT || 3000;
+  app.use(express.json());
 
 //Verificar se a conexão foi realizada com sucesso
 pool.connect()
@@ -58,6 +58,5 @@ pool.connect()
     //encerrar o processo
     process.exit(1);
   });
-
 
 module.exports = app;

@@ -1,5 +1,12 @@
 const express = require('express');
 const router = express.Router();
+
+
+// Exemplo de rota de usuário (pode ser removida ou editada depois)
+router.get('/landingPage', (req, res) => {
+  res.send('Rotas de usuário funcionando!');
+});
+
 const userController = require('../controllers/userController');
 
 //create user
@@ -24,3 +31,4 @@ router.get('/loginUser', (req, res) => {
 });
 
 module.exports = router;
+
