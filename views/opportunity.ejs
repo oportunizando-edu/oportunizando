@@ -10,7 +10,7 @@
 <body>
     <main class="m-8 sm:mx-32 flex flex-col justify-center">
         <div class="flex justify-between items-center">
-            <h1 class="text-5xl text-[#472E7C] font-bold mb-2">
+            <h1 class="text-4xl sm:text-5xl text-[#472E7C] font-bold mb-2">
                 <%= opportunity.title.charAt(0).toUpperCase() + opportunity.title.slice(1) %>
             </h1>
             <% if(opportunity.is_open) {%>
@@ -26,7 +26,7 @@
         <div class="flex justify-between text-base">
             <% if(opportunity.local) {%>
                 <div class="flex gap-2">
-                    <img src="/img/local.png">
+                    <img src="/img/local.svg">
                     <p>
                         <%= opportunity.local %>
                     </p>
