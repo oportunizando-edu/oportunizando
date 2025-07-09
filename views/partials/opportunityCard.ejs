@@ -1,17 +1,9 @@
 <div class="bg-[#FAFAFA] p-2 rounded-md border border-black-1/2 w-full">
-    <div class="flex justify-between mx-4">
-        <div>
+    <div class="flex flex-col justify-between mx-4">
+        <div class="flex justify-between items-center">
             <h2 class="text-3xl text-[#442F72] font-bold p-2 pb-0">
                 <%= opportunity.title.charAt(0).toUpperCase() + opportunity.title.slice(1) %>
             </h2>
-            <%if (opportunity.local) { %>
-                <div class="flex justify-evenly items-center text-sm font-bold">
-                    <img src="/img/local.png" alt="Símbolo de local">
-                    <p><%= opportunity.local %></p>
-                </div>
-            <%}%>
-        </div>
-        <div class="flex flex-col items-end justify-center gap-2 p-2">
             <% if(opportunity.is_open){ %>
                 <div class="bg-[#3C9E4F] rounded-md text-white font-bold flex justify-center w-fit p-1 px-3">
                     Aberto
@@ -21,10 +13,24 @@
                     Fechado
                 </div>
             <% } %>
-            <div class="break-normal text-right">
-                <!--Formatar para a data normal no Brasil -->
-                Data limite: <span class="font-bold"><%= new Intl.DateTimeFormat('pt-BR').format(opportunity.deadline) %></span>
-            </div>
+        </div>
+        <div class="flex justify-between gap-4 p-2">
+            <%if (opportunity.local) { %>
+                <div class="flex justify-evenly items-center text-sm font-bold">
+                    <img src="/img/local.png" alt="Símbolo de local">
+                    <p><%= opportunity.local %></p>
+                </div>
+                <div class="break-normal text-right">
+                    <!--Formatar para a data normal no Brasil -->
+                    Data limite: <span class="font-bold"><%= new Intl.DateTimeFormat('pt-BR').format(opportunity.deadline) %></span>
+                </div>
+            <%} else {%>
+                <div class="break-normal text-right ml-auto">
+                    <!--Formatar para a data normal no Brasil -->
+                    Data limite: <span class="font-bold"><%= new Intl.DateTimeFormat('pt-BR').format(opportunity.deadline) %></span>
+                </div>
+            <%}%>
+            
         </div>
     </div>
     <p class="mx-6 my-3 mb-6 line-clamp-3 text-base">
@@ -72,7 +78,7 @@
             </div>
         <% } %>
     </div>
-    <a href="opportunity/<%= opportunity.id %>"
+    <a href="/opportunity/<%= opportunity.id %>"
         class="flex justify-center bg-[#5F37B5] text-white font-bold rounded-md mx-8 my-4 py-2">
         Ver mais
     </a>
