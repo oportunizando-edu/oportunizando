@@ -1,40 +1,107 @@
-require('dotenv').config();
+//Definição de constantes
 const express = require('express');
 const app = express();
 const path = require('path');
-const ServerErrorHandler = require('./helpers/serverErrorHandler');
+const pool = require('./config/db');
 
+//interpretar dados de formulários HTML (application/x-www-form-urlencoded)
+app.use(express.urlencoded({ extended: true }));
+//Usar o express com json
+app.use(express.json());
+const session = require('express-session');
+require('dotenv').config();
+
+//definindo sessão
+app.use(session({
+  secret: process.env.SESSION_SECRET,  
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}));
+
+
+//Definição da views
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// Serve static files from public directory
+//Definição do public
 app.use(express.static(path.join(__dirname, 'public')));
 
-async function startServer() {
-  const dbConnected = await ServerErrorHandler.databaseConnectionHandler();
-  
-  if (!dbConnected) {
+//importando caminho das rotas principais
+const userRoutes = require('./routes/userRoutes');
+const interestsRoutes = require('./routes/interestsRoutes');
+const landingPageRoutes = require('./routes/frontRoutes');
+
+//Definindo rotas principais
+app.use('/', userRoutes);
+app.use('/', interestsRoutes);
+app.use('/', landingPageRoutes);
+
+//Criar rota para team
+/* app.get('/team', (req, res) => {
+  res.render('team')
+}) */
+
+//Usar o middleware de ler requisições de post
+app.use(express.urlencoded({extended: true}))
+
+//Usar o session
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // true em HTTPS
+    maxAge: 24000 * 60 * 60 // 24 horas
+  }
+}));
+
+//Rota do homeStudent
+const homeStudentRoutes = require('./routes/homeStudentsRoutes');
+app.use('/homeStudents', homeStudentRoutes);
+
+//Rota de visualização
+const opportunitiesByAreaRoutes = require('./routes/opportunitiesByAreaRoutes');
+app.use('/opportunities', opportunitiesByAreaRoutes)
+
+const opportunityRoutes = require('./routes/opportunityRoutes');
+app.use('/opportunity', opportunityRoutes);
+
+//Testar a conexão com o bd:
+const db = require('./config/db');
+
+(async () => {
+  try {
+    const client = await db.connect();
+    const res = await client.query('SELECT NOW()');
+    console.log('Conectado ao banco em:', res.rows[0].now);
+    client.release();
+  } catch (error) {
+    console.error('Erro ao conectar no banco:', error);
     process.exit(1);
   }
+})();
 
-  app.use(express.json());
 
-  const userRoutes = require('./routes/userRoutes');
-  app.use('/users', userRoutes);
+//Porta para ser usada
+const PORT = process.env.PORT || 3000;
 
-  const frontendRoutes = require('./routes/frontRoutes');
-  app.use('/', frontendRoutes);
+//Verificar se a conexão foi realizada com sucesso
+pool.connect()
+  .then(client => {
+    console.log('Conexão com o banco de dados realizada com sucesso');
+    client.release();
 
-  // Middleware para lidar com erros de rota não encontrada
-  app.use(ServerErrorHandler.notFoundHandler);
-
-  // Middleware para lidar com erros internos do servidor
-  app.use(ServerErrorHandler.globalErrorHandler);
-
-  const PORT = process.env.PORT || 3000;
-  app.listen(PORT, () => {
-    console.log(`🚀 Servidor rodando na porta ${PORT}`);
+    //Inciar após a conexão com o db
+    app.listen( PORT, () =>{
+      console.log("Servidor rodando na porta:", PORT);
+    })
+  })
+  .catch(err => {
+    console.error('Erro ao se conectar com o banco de dados: ', err);
+    //encerrar o processo
+    process.exit(1);
   });
-}
 
-startServer();
+
+module.exports = app;

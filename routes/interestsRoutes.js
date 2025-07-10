@@ -1,16 +1,22 @@
 const express = require('express');
 const router = express.Router();
+const interestsController = require('../controllers/interestsController');
 
-const UserRepository = require('../repositories/userRepository');
-const UserService = require('../services/userService');
-const UserController = require('../controllers/userController');
+// RExibir tela (areas)
+router.get('/interestsAll', interestsController.renderSelectAreas);
 
-const controller = new UserController(new UserService(new UserRepository()));
+//selecionar interesses
+router.post('/interests', interestsController.selectAreas);
 
-router.get('/', controller.getAllUsers.bind(controller));
-router.get('/:id', controller.getUserById.bind(controller));
-router.post('/', controller.createUser.bind(controller));
-router.put('/:id', controller.updateUser.bind(controller));
-router.delete('/:id', controller.deleteUser.bind(controller));
+/* //mostrar oportunidades baseadas nos interesses
+router.get('/myOpportunities', interestsController.getOpportunitiesByUser);
+ */
+//apagar area de interesse
+router.delete('/interests', interestsController.deleteArea);
+
+//views
+router.get('/interestsAll', (req, res) =>{
+    res.render('interests');
+});
 
 module.exports = router;
