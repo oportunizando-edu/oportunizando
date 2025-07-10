@@ -61,8 +61,11 @@ const homeStudentRoutes = require('./routes/homeStudentsRoutes');
 app.use('/homeStudents', homeStudentRoutes);
 
 //Rota de visualização
-const opportunitiesByAreaRoutes = require('./routes/opportunitiesByArea');
+const opportunitiesByAreaRoutes = require('./routes/opportunitiesByAreaRoutes');
 app.use('/opportunities', opportunitiesByAreaRoutes)
+
+const opportunityRoutes = require('./routes/opportunityRoutes');
+app.use('/opportunity', opportunityRoutes);
 
 //Testar a conexão com o bd:
 const db = require('./config/db');
