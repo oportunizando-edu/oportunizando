@@ -60,6 +60,26 @@ app.use(session({
 const homeStudentRoutes = require('./routes/homeStudentsRoutes');
 app.use('/homeStudents', homeStudentRoutes);
 
+//Rota de visualização
+const opportunitiesByAreaRoutes = require('./routes/opportunitiesByArea');
+app.use('/opportunities', opportunitiesByAreaRoutes)
+
+//Testar a conexão com o bd:
+const db = require('./config/db');
+
+(async () => {
+  try {
+    const client = await db.connect();
+    const res = await client.query('SELECT NOW()');
+    console.log('Conectado ao banco em:', res.rows[0].now);
+    client.release();
+  } catch (error) {
+    console.error('Erro ao conectar no banco:', error);
+    process.exit(1);
+  }
+})();
+
+
 //Porta para ser usada
 const PORT = process.env.PORT || 3000;
 

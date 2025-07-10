@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunidade por área</title>
+    <!--Adicionar o Tailwind usando o cdn-->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+  
+    <main class="flex flex-col mx-8 gap-6">
+        <h1 class="text-4xl text-[#442F72] font-bold m-8 self-center">
+            Opportunidades em: <%= areaTitle.charAt(0).toUpperCase() + areaTitle.slice(1) %>
+        </h1>
+
+        <!--Card de oportunidades-->
+        <div class="flex-wrap gap-6 w-full sm:w-1/2">
+        <% opportunities.forEach( opportunity => {%>
+            <%- include('partials/opportunityCard.ejs', {opportunity}) %>
+        <% })%>
+        </div>
+    </main>
+    
+</body>
+</html>
