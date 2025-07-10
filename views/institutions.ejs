@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Início
+  </title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style-landingpage.css">
+</head>
+<%- include('partials/header', { pageTitle: 'Oportunizando' }) %>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunizando - Instituições</title>
+    <!--Adicionar o Tailwind usando o cdn-->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <main>
+        <!--seção de apresentação-->
+        <div class="relative w-full h-screen flex justify-center items-center shadow-md">
+            <!--Imagem de fundo-->
+            <img src="img/background.png" alt="banner" class=" w-full h-full object-cover">
+
+            <div class="absolute inset-0 max-w-full h-auto flex flex-col md:flex-row place-content-between justify-center items-center mx-auto self-center ">
+                <img src="img/logo.png" alt="imagem da logo" class=" w-1/2 h-auto">
+                <div class="bg-white  max-h-full rounded-2xl flex flex-col justify-center items-center gap-2 sm:gap-5 p-5 sm:w-1/2 m-8 h-auto sm:py-8">
+                    <h1 class ="text-2xl sm:text-3xl md:text-4xl text-center leading-[2]">
+                        Oportunizando para<br>
+                        <span class="text-5xl sm:text-6xl md:text-7xl font-bold justify-center">
+                            Instituições
+                        </span>      
+                    </h1> 
+                    <p class="text-4xl ">
+                        Acesse agora!
+                    </p>
+                    <p class="text-3xl ">
+                        (Em Breve)
+                    </p>
+
+                    <a href="#elementFocus" class="bg-[#F3CF64] p-2 px-16 rounded-md text-lg mt-12 text-[#472E7B] font-bold">
+                        Saber mais
+                    </a>
+                </div>              
+            </div>
+        </div>
+        <!--Seção de apresentação da ideia-->
+        <section class="text-lg  flex flex-col justify-center items-center mx-8 sm:mx-32" id="elementFocus">
+            <h2 class="self-start mb-8 mt-12 text-3xl sm:text-none sm:text-4xl text-[#5F37B5] font-bold">
+                Transforme sua instituição em uma ponte para o futuro dos seus alunos
+            </h2>
+
+            <p class="self-start p-2 px-8">
+                A Oportunizando entende que escolas, ONGs e projetos educacionais são os verdadeiros agentes de transformação na vida de milhares de jovens. 
+            </p>
+            <p class="self-start p-2 px-8">
+                Por isso, criamos uma <span class="font-bold">solução exclusiva para instituições</span>, que <span class="font-bold">potencializa o impacto do seu trabalho e garante que seus alunos acessem as melhores oportunidades do mercado – de bolsas de estudo a programas de empreendedorismo, estágios e formações técnicas.</span>
+            </p>
+
+            <h2 class=" self-start mb-8 mt-8 sm:mt-16 text-4xl text-[#5F37B5] font-bold">
+                Como funciona?
+            </h2>
+            <div class="flex flex-col sm:flex-row sm:place-content-between p-2 px-8">
+                <div class="flex flex-col text-lg gap-4 sm:w-1/2">
+                   <p>
+                    Nossa plataforma oferece um sistema integrado para que sua equipe cadastre alunos, acompanhe suas jornadas e os conecte diretamente a oportunidades personalizadas, além de <span class="font-bold">ferramentas para professores.</span>
+                   </p>
+                   <p>
+                    Com relatórios detalhados, você consegue medir o real impacto das iniciativas que oferece: quantos jovens foram aprovados em universidades? Quantos conseguiram o primeiro emprego? Esses dados não só comprovam o valor do seu trabalho, como ajudam a captar recursos e parcerias estratégicas.
+                   </p>
+
+                   <h4 class="font-bold">
+                    Por que sua instituição precisa da Oportunizando?
+                   </h4>
+                   <ul class="list-disc flex flex-col gap-4 px-8">
+                    <li>Aumente o sucesso dos seus alunos: Oferecemos ferramentas para prepará-los em todas as etapas – desde a inscrição em oportunidades até a conquista da vaga.</li>
+                    <li>Ganhe tempo e eficiência: Centralizamos milhares de programas em um só lugar, eliminando a necessidade de buscas manuais.</li>
+                    <li>Destaque-se como referência: Instituições parceiras recebem o Selo Oportunizando, um reconhecimento pelo compromisso com a empregabilidade e educação de qualidade.</li>
+                    <li>Tome decisões baseadas em dados: Nossos relatórios mostram quais oportunidades têm maior aderência ao perfil dos seus alunos, permitindo ajustes rápidos na estratégia.</li>
+                   </ul>
+                </div>
+                <div class="sm:w-1/2 mt-4 sm:m-0 flex items-center justify-center ">
+                    <img src="img/team.png" alt="Estudantes felizes" class=" px-4">
+                </div>
+            </div>
+        </section>
+
+        <!--Seção de apresentação das funcionalidades-->
+        <section class="w-full">
+            <h2 class="pb-8 sm:p-8 mt-12 text-3xl sm:text-4xl sm:text-left text-[#5F37B5] font-bold mx-8 sm:mx-32">
+                Cadastre sua instituição hoje e comece a transformar oportunidades em conquistas reais para seus alunos!
+            </h2>
+            <div class="flex flex-col sm:flex-row sm:place-content-between px-8 w-full gap-5">
+                <div class="flex flex-col w-full items-center  bg-[#482E7F] text-lg rounded-md">
+                    <h3 class="font-bold text-[#FBCC42] text-3xl text-center sm:text-4xl mt-10 mx-10">
+                        Planos sob medida para o seu impacto 📊
+                    </h3>
+                    <p class="text-white m-10">
+                        Oferecemos desde um acesso gratuito, ideal para instituições que querem começar a explorar oportunidades, até um plano PRO, com recursos avançados como capacitação de professores, mentoria para gestores e divulgação prioritária de vagas exclusivas para seus alunos.
+                    </p>
+                </div>
+
+                <div class="flex flex-col w-full items-center bg-[#482E7F] text-lg rounded-md text-white ">
+                    <h3 class="font-bold text-[#FBCC42] text-3xl text-center sm:text-4xl mt-10">
+                        Juntos, podemos ir além 🚀
+                    </h3>
+                    <p class="mx-10 m-4 mt-10 sm:mt-16">
+                        Imagine poder mostrar, com números concretos, como sua instituição mudou trajetórias. 
+                    </p>
+                    <p class="mx-10 m-4 mb-6 mt-0">
+                        Com a Oportunizando, esse futuro é possível. Vamos transformar acesso em conquista? 
+                    </p>
+                </div>
+        </section>
+
+        <!--Seção final-->
+        <section class="flex flex-col justify-center items-center mt-12 px-8 sm:px-0 mb-12">
+            <h3 class="italic text-3xl sm:text-4xl font-bold text-[#5F37B5] text-center">
+                "Sua instituição forma talentos. Nós mostramos o caminho. Vamos juntos?"
+            </h3>
+
+            <div class="flex gap-4 place-content-around mt-8 w-full sm:w-5/6 p-2">
+                <button class="bg-[#F3CF64] p-3 w-5/6 rounded-md text-[#442F72] shadow-md">
+                    Saiba mais sobre nossos planos (Será adicionado futuramente)
+                </button>
+                <button class="bg-[#F3CF64] p-3  w-5/6 rounded-md text-[#442F72] shadow-md">
+                    Agende uma demonstração (Será adicionado futuramente)
+                </button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
+ <%- include('partials/footer') %>
+    </body>
+
+</html>

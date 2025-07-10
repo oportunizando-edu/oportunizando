@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const pool = require('./config/db');
+
 //interpretar dados de formulários HTML (application/x-www-form-urlencoded)
 app.use(express.urlencoded({ extended: true }));
 //Usar o express com json
@@ -17,6 +18,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false }
 }));
+
 
 //Definição da views
 app.set('view engine', 'ejs');
@@ -39,6 +41,36 @@ app.use('/', landingPageRoutes);
 /* app.get('/team', (req, res) => {
   res.render('team')
 }) */
+
+//Usar o middleware de ler requisições de post
+app.use(express.urlencoded({extended: true}))
+
+//Rota do homeStudent
+const homeStudentRoutes = require('./routes/homeStudentsRoutes');
+app.use('/homeStudents', homeStudentRoutes);
+
+//Rota de visualização
+const opportunitiesByAreaRoutes = require('./routes/opportunitiesByAreaRoutes');
+app.use('/opportunities', opportunitiesByAreaRoutes)
+
+const opportunityRoutes = require('./routes/opportunityRoutes');
+app.use('/opportunity', opportunityRoutes);
+
+//Testar a conexão com o bd:
+const db = require('./config/db');
+
+(async () => {
+  try {
+    const client = await db.connect();
+    const res = await client.query('SELECT NOW()');
+    console.log('Conectado ao banco em:', res.rows[0].now);
+    client.release();
+  } catch (error) {
+    console.error('Erro ao conectar no banco:', error);
+    process.exit(1);
+  }
+})();
+
 
 //Porta para ser usada
 const PORT = process.env.PORT || 3000;

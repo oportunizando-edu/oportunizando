@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Início
+  </title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<%- include('partials/header', { pageTitle: 'Oportunizando' }) %>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunidade</title>
+    <!--Adicionar o Tailwind usando o cdn-->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <main class="m-8 sm:mx-32 flex flex-col justify-center my-24 mb-32">
+        <div class="flex justify-between items-center">
+            <h1 class="text-4xl sm:text-5xl text-[#472E7C] font-bold mb-2">
+                <%= opportunity.title.charAt(0).toUpperCase() + opportunity.title.slice(1) %>
+            </h1>
+            <% if(opportunity.is_open) {%>
+                <div class="bg-[#3C9E4F] rounded-md w-fit p-2 px-4 text-white text-2xl font-bold">
+                    Aberto
+                </div>
+            <% } else { %>
+                <div class="bg-[#FF3F42] rounded-md w-fit p-2 px-4 text-white text-2xl font-bold">
+                    Fechado
+                </div>
+            <% } %>
+        </div>
+        <div class="flex justify-between text-base">
+            <% if(opportunity.local) {%>
+                <div class="flex gap-2">
+                    <img src="/img/local.svg">
+                    <p>
+                        <%= opportunity.local %>
+                    </p>
+                </div>
+                <div>
+                    Data limite: <span class="font-bold"><%= new Intl.DateTimeFormat('pt-BR').format(opportunity.deadline)%></span>
+                </div>
+            <% } else {%>
+                <div class="ml-auto">
+                    Data limite: <span class="font-bold"><%= new Intl.DateTimeFormat('pt-BR').format(opportunity.deadline)%></span>
+                </div>
+            <% }%>
+        </div>
+
+        <p class="text-lg my-14">
+            <%= opportunity.description %>
+        </p>
+
+        <div class="flex flex-col sm:flex-row justify-between w-full">
+            <% if(opportunity.benefits){%>
+                <div class="flex flex-col gap-2 w-full">
+                    <h2 class="text-4xl text-[#5F37B5] font-bold">
+                        Benefícios
+                    </h2>
+                    <ul class="list-disc px-8 mb-16 text-lg">
+                        <% const benefits = opportunity.benefits.split("\n"); %>
+                        <% benefits.forEach( benefit => { %>
+                            <li><%= benefit%></li>
+                        <% }) %> 
+                    </ul>
+                </div>
+            <% } %>
+            <% if(opportunity.requirements){%>
+                <div class="flex flex-col gap-2 mr-8 w-full">
+                    <h2 class="text-4xl text-[#5F37B5] font-bold">
+                        Requisitos
+                    </h2>
+                    <ul class="list-disc px-8 mb-16 text-lg">
+                        <% const requirements = opportunity.requirements.split("\n"); %>
+                        <% requirements.forEach( requirement => { %>
+                            <li><%= requirement%></li>
+                        <% }) %> 
+                    </ul>
+                </div>
+            <% } %>
+        </div>
+
+        <a href="<%= opportunity.link%>" target="_blank" class="flex justify-center font-bold text-white text-lg bg-[#5F37B5] rounded-md shadow-md mx-auto p-4 w-full sm:w-1/2 mb-8">
+            Link de inscrição
+        </a>
+
+        <% if(isLogged) {%>
+            <form action="/opportunity/<%= opportunity.id %>" method="POST" class="inline">
+                <button type="submit" class="flex justify-center items-center gap-2 font-bold text-[#5F37B5] text-lg bg-[#FFC929] rounded-md shadow-md mx-auto p-4 w-full sm:w-1/2">
+                    <img src="/img/add.svg" alt="Símbolo de adição">
+                    Adicionar ao meu quadro Kanban
+                </button>
+            </form>
+        <% } %>
+
+    </main>
+    
+</body>
+</html>
+
+ <%- include('partials/footer') %>
+    </body>
+
+</html>
