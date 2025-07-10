@@ -1,4 +1,26 @@
 <!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Início
+  </title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style-landingpage.css">
+</head>
+<%- include('partials/header', { pageTitle: 'Oportunizando' }) %>
+
+
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -9,18 +31,24 @@
 </head>
 <body>
   
-    <main class="flex flex-col mx-8 gap-6">
+    <main class="flex flex-col mx-8 gap-6 my-12">
         <h1 class="text-4xl text-[#442F72] font-bold m-8 self-center">
             Opportunidades em: <%= areaTitle.charAt(0).toUpperCase() + areaTitle.slice(1) %>
         </h1>
-
         <!--Card de oportunidades-->
-        <div class="flex-wrap gap-6 w-full sm:w-1/2">
-        <% opportunities.forEach( opportunity => {%>
-            <%- include('partials/opportunityCard.ejs', {opportunity}) %>
-        <% })%>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full mb-24">
+            <% opportunities.forEach( opportunity => {%>
+                <div class="h-full">
+                    <%- include('partials/opportunityCard.ejs', {opportunity}) %>
+                </div>
+            <% })%>
         </div>
     </main>
     
 </body>
+</html>
+
+ <%- include('partials/footer') %>
+    </body>
+
 </html>
