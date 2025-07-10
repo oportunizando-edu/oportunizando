@@ -2,7 +2,7 @@ const opportunityModel = require('../models/opportunityModel');
 //Renderizar a página de oportunidades
 exports.getOpportunityPage = async(req, res) => {
     try{
-        const isLogged = false //trocar depois por uma maneira de ver se tem alguém logado
+        const isLogged = !!req.session?.user
         const opportunityId = req.params.id;
 
         const opportunity = await opportunityModel.getOpportunityById(opportunityId);
@@ -19,7 +19,7 @@ exports.getOpportunityPage = async(req, res) => {
 //Adicionar uma oportunidade a um usuário
 exports.addOpportunityToStudent = async(req, res) => {
     try{
-        const userId = 0;//trocar depois por uma maneira de acessar o id do usuário
+        const userId = req.session.user?.id;
         const opportunityId = req.params.id;
 
         const opportunityToStudent = await opportunityModel.addOpportunityToStudent(userId, opportunityId);
