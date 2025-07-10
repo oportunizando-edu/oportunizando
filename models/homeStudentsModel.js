@@ -1,53 +1,32 @@
-const Joi = require('joi');
+//Chamar a pool de conexões 
+const pool = require("../config/db");
 
-const userSchema = Joi.object({
-  id: Joi.string().uuid(),
-  name: Joi.string().min(2).max(100).required(),
-  email: Joi.string().email().required()
-});
+//Modularizar as funções
+module.exports = {
+    //pegar as informações de acordo com o estudante logado
+    async getAreasByStudentsId(id){
+        const values = [id];
+        const query = `SELECT areas.* FROM areas
+                        JOIN users_areas ON areas.id = users_areas.area_id
+                        WHERE users_areas.user_id = $1`;
+        const result = await pool.query(query, values);
+        //retornar todos os resultados em um array
+        return result.rows;
+    },
 
-const userCreateSchema = Joi.object({
-  name: Joi.string().min(2).max(100).required(),
-  email: Joi.string().email().required()
-});
-
-const userUpdateSchema = Joi.object({
-  name: Joi.string().min(2).max(100),
-  email: Joi.string().email()
-}).min(1);
-
-class UserModel {
-  static validate(userData, isUpdate = false) {
-    const schema = isUpdate ? userUpdateSchema : userCreateSchema;
-    const { error, value } = schema.validate(userData);
-    if (error) {
-      throw new Error(`Erro de validação: ${error.details[0].message}`);
-    }
-    return value;
-  }
-
-  static validateId(id) {
-    if (!id || typeof id !== 'string') {
-      throw new Error('ID é obrigatório');
-    }
+    //pegar todas as áreas
+    async getAllAreas(){
+        const query = `SELECT * FROM areas`;
+        const result = await pool.query(query);
+        //retornar todos os resultados em um array
+        return result.rows;
+    },   
     
-    // UUID v4 regex pattern
-    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-    
-    if (!uuidRegex.test(id)) {
-      throw new Error('ID inválido - deve ser um UUID válido');
+    //pegar as áreas de acordo com o filtro
+    async getAreasByTitle(title){
+      const query = ` SELECT * FROM areas WHERE title ILIKE '%' || $1 || '%' `;
+      const values = [title.trim()]; //evitar espaços 
+      const result = await pool.query(query, values);
+      return result.rows;
     }
-    
-    return id;
-  }
-
-  static validateEmail(email) {
-    const { error } = Joi.string().email().validate(email);
-    if (error) {
-      throw new Error('Email inválido');
-    }
-    return email;
-  }
 }
-
-module.exports = UserModel;
