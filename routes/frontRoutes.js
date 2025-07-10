@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const kanbanController = require('../controllers/kanbanController');
 
 // Rota principal para a landing page
 router.get('/', (req, res) => {
@@ -13,6 +14,9 @@ router.get('/team', (req, res) => {
 router.get('/opportunities', (req, res) => {
   res.render('opportunities');
 });
+
+// Nova rota para o kanban
+router.get('/kanban', kanbanController.renderKanban);
 
 // Rota para "Conheça nossos talentos" - redireciona para a seção de histórias de sucesso
 router.get('/talentos', (req, res) => {
