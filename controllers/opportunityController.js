@@ -19,7 +19,7 @@ exports.getOpportunityPage = async(req, res) => {
 //Adicionar uma oportunidade a um usuário
 exports.addOpportunityToStudent = async(req, res) => {
     try{
-        const userId = req.session.user?.id;
+        const userId = req.session.user?.user_id;
         const opportunityId = req.params.id;
 
         const opportunityToStudent = await opportunityModel.addOpportunityToStudent(userId, opportunityId);

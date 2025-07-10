@@ -4,7 +4,7 @@ module.exports = {
     //Carregar a página
     async getHomePage(req, res) {
         try {
-            const userId = req.session.user?.id;
+            const userId = req.session.user?.user_id;
             const isLogged = !!req.session?.user;
             const [areasByStudent, areas] = await Promise.all([
                 homeStudentsModel.getAreasByStudentsId(userId),
@@ -24,7 +24,7 @@ module.exports = {
     //Recarregar a página com as informações da pesquisa por área
     async searchByTitle(req, res) {
         try {
-            const userId = req.session.user?.id;
+            const userId = req.session.user?.user_id;
             const isLogged = !!req.session?.user;
 
             const [areasByStudent, areas, areasByTitle] = await Promise.all([
