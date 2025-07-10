@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const pool = require('./config/db');
+
 //interpretar dados de formulários HTML (application/x-www-form-urlencoded)
 app.use(express.urlencoded({ extended: true }));
 //Usar o express com json
@@ -17,6 +18,7 @@ app.use(session({
   saveUninitialized: false,
   cookie: { secure: false }
 }));
+
 
 //Definição da views
 app.set('view engine', 'ejs');
@@ -39,6 +41,24 @@ app.use('/', landingPageRoutes);
 /* app.get('/team', (req, res) => {
   res.render('team')
 }) */
+
+//Usar o middleware de ler requisições de post
+app.use(express.urlencoded({extended: true}))
+
+//Usar o session
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, // true em HTTPS
+    maxAge: 24000 * 60 * 60 // 24 horas
+  }
+}));
+
+//Rota do homeStudent
+const homeStudentRoutes = require('./routes/homeStudentsRoutes');
+app.use('/homeStudents', homeStudentRoutes);
 
 //Porta para ser usada
 const PORT = process.env.PORT || 3000;
