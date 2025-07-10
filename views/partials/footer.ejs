@@ -15,14 +15,28 @@
             <li><a class="dropdown-item" href="/#contato">Contato</a></li>
           </ul>
         </div>
-        <a class="nav-link text-white" href="/institutions" style="padding: 0.5rem 1.5rem; border-radius: 8px;">Para
-          instituições</a>
-        <a class="nav-link text-white" href="/opportunities" style="padding: 0.5rem 1.5rem; border-radius: 8px;">Para
-          oportunidades</a>
-        <a class="nav-link text-white" href="/students" style="padding: 0.5rem 1.5rem; border-radius: 8px;">Para
-          estudantes</a>
-        <a href="/createUser" class="btn"
-          style="background: #FFD86A; color: #4B3275; font-weight: bold; min-width: 140px; font-size: 1.1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">Cadastre-se</a>
+         <div class="nav-item dropdown sm:hidden">
+          <a class="nav-link dropdown-toggle text-white px-1" href="#" id="sobreDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false"
+            style="background: rgba(255,255,255,0.15); border-radius: 8px;">
+            Páginas
+          </a>
+        <ul class="dropdown-menu" aria-labelledby="sobreDropdownFooter" >
+            <li><a class="dropdown-item" href="/institutions">Para instituições</a></li>
+            <li><a class="dropdown-item" href="/opportunities">Para oportunidades</a></li>
+            <li><a class="dropdown-item" href="/students">Para estudantes</a></li>
+          </ul>
+          </div>
+          <div class="hidden sm:flex">
+            <a class="nav-link text-white" href="/institutions" style="padding: 0.5rem 1.5rem; border-radius: 8px;">Para
+              instituições</a>
+            <a class="nav-link text-white" href="/opportunities" style="padding: 0.5rem 1.5rem; border-radius: 8px;">Para
+              oportunidades</a>
+            <a class="nav-link text-white" href="/students" style="padding: 0.5rem 1.5rem; border-radius: 8px;">Para
+              estudantes</a>
+            </div>
+            <a href="/createUser" class="btn"
+              style="background: #FFD86A; color: #4B3275; font-weight: bold; min-width: 140px; font-size: 1.1rem; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.04);">Cadastre-se</a>
       </div>
     </div>
   </div>
