@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Selecione seus interesses</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex flex-col md:flex-row min-h-screen">
+  <!-- Lado esquerdo com imagem -->
+  <div class="w-full md:w-1/3 h-64 md:h-screen">
+    <img src="/images/loginIMG.png" alt="Estudantes" class="object-cover w-full h-[620px]" />
+  </div>
+
+  <!-- Lado direito com formulário -->
+  <div class="w-full md:w-2/3 flex flex-col items-center justify-center px-10 py-8">
+    <!-- Logo -->
+    <img src="/images/logo.png" alt="Logo" class="w-36 mb-6" />
+
+    <!-- Texto -->
+    <p class="text-lg text-center mb-6">
+      Selecione seus principais interesses de carreira para filtrar oportunidades:
+    </p>
+
+    <!-- Formulário -->
+    <form action="/interests" method="POST" id="formInteresses" class="flex flex-col items-center space-y-6">
+      <!-- Botões -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <% areas.forEach(area => { %>
+          <button type="button"
+                  class="area-btn border border-purple-700 text-purple-700 px-4 py-2 rounded hover:bg-purple-100 transition"
+                  data-id="<%= area.id %>">
+            <%= area.title %>
+          </button>
+        <% }) %>
+      </div>
+
+      <!-- Campo oculto para cada área marcada (input[] para array de verdade) -->
+      <div id="hiddenInputs"></div>
+
+      <!-- Botão continuar -->
+      <button type="submit"
+              class="bg-purple-800 text-white px-10 py-2 rounded hover:bg-purple-900 transition">
+        Continuar
+      </button>
+    </form>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('.area-btn');
+    const hiddenInputsContainer = document.getElementById('hiddenInputs');
+    const selectedIds = new Set();
+
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+
+        if (selectedIds.has(id)) {
+          selectedIds.delete(id);
+          btn.classList.remove('bg-purple-800', 'text-white');
+          btn.classList.add('text-purple-700', 'border', 'border-purple-700');
+        } else {
+          selectedIds.add(id);
+          btn.classList.remove('text-purple-700', 'border');
+          btn.classList.add('bg-purple-800', 'text-white');
+        }
+
+        // Atualiza os inputs ocultos
+        hiddenInputsContainer.innerHTML = '';
+        Array.from(selectedIds).forEach(id => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'area_ids[]';
+          input.value = id;
+          hiddenInputsContainer.appendChild(input);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

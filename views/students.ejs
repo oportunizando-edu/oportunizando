@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Início
+  </title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/style-landingpage.css">
+</head>
+<%- include('partials/header', { pageTitle: 'Oportunizando' }) %>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oportunizando - Estudantes</title>
+    <!--Adicionar o Tailwind usando o cdn-->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+
+    <main>
+        <!--seção de apresentação-->
+        <div class="relative w-full h-screen flex justify-center items-center shadow-md">
+            <!--Imagem de fundo-->
+            <img src="img/background.png" alt="banner" class=" w-full h-full object-cover">
+
+            <div class="absolute inset-0 max-w-full h-auto flex flex-col md:flex-row place-content-between justify-center items-center mx-auto self-center ">
+                <img src="img/logo.png" alt="imagem da logo" class=" w-1/2 h-auto">
+                <div class="bg-white  max-h-full rounded-2xl flex flex-col justify-center items-center gap-2 sm:gap-5 p-5 sm:w-1/2 m-8 h-auto sm:py-8">
+                    <h1 class ="text-2xl sm:text-3xl md:text-4xl text-center leading-[2]">
+                        Oportunizando para<br>
+                        <span class="text-5xl sm:text-6xl md:text-7xl font-bold justify-center">
+                            Estudantes
+                        </span>      
+                    </h1> 
+                    <p class="text-4xl ">
+                        Acesse agora!
+                    </p>
+
+                    <a href="#elementFocus" class="bg-[#F3CF64] p-2 px-16 rounded-md text-lg mt-12 text-[#472E7B] font-bold">
+                        Saber mais
+                    </a>
+                </div>              
+            </div>
+        </div>
+        <!--Seção de apresentação da ideia-->
+        <section class="text-lg  flex flex-col justify-center items-center mx-8 sm:mx-32" id="elementFocus">
+            <h2 class="self-start mb-8 mt-12 text-4xl text-[#5F37B5] font-bold">
+                Oportunizando para Estudantes: Seu Passaporte para as Melhores Oportunidades
+            </h2>
+
+            <p class="self-start p-2 px-8">
+                Você já sentiu que as melhores chances parecem estar quase sempre ao seu alcance, mas nunca exatamente onde você pode pegá-las? Nós também. E criamos a solução.
+            </p>
+
+            <p class="p-2 px-8">
+                A Oportunizando é feita por jovens, para jovens - uma plataforma onde seu talento finalmente encontra as oportunidades que merece. Seja uma bolsa de estudos, estágio, curso técnico ou programa de aceleração, aqui você acessa o que realmente importa.
+            </p>
+            <h2 class=" self-start mb-8 mt-16 text-4xl text-[#5F37B5] font-bold">
+                Por Que Você Vai Amar a Oportunizando?
+            </h2>
+            <div class="flex flex-col sm:flex-row sm:place-content-between p-2 px-8">
+                <div class="flex flex-col text-lg gap-4 sm:w-1/2">
+                    <div>
+                        <h3 class="font-bold">
+                            1. Tudo num Só Lugar
+                        </h3>
+                        <p>
+                            Chega de perder horas caçando vagas em sites desconexos! Reunimos oportunidades reais e verificadas de empresas, universidades e organizações sociais em um único lugar fácil de navegar.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold">
+                            2. Feita para o Seu Perfil
+                        </h3>
+                        <p>
+                            Nosso sistema inteligente aprende com você. Quanto mais usa, mais recomenda oportunidades que fazem sentido para sua trajetória.
+                        </p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-bold">
+                            3. Apoio Além da Vaga 
+                        </h3>
+                        <p>
+                            Oferecemos:
+                        </p>
+                        <ul class="list-disc mx-8">
+                            <li>
+                                Mentorias gratuitas com profissionais renomados (EM BREVE).
+                            </li>
+                            <li>
+                                Cursos preparatórios para processos seletivos (EM BREVE).
+                            </li>
+                            <li>
+                                Comunidades de jovens com objetivos similares.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-bold">
+                            4. Sem Barreiras
+                        </h3>
+                        <p>
+                            Não importa se você vem de escola pública, mora na periferia ou é o primeiro da família a sonhar com faculdade. Aqui, seu potencial é seu único cartão de visita.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="sm:w-1/2 mt-4 sm:m-0 flex items-center justify-center ">
+                    <img src="img/happyStudentsBackground.png" alt="Estudantes felizes" class=" px-4">
+                </div>
+            </div>
+        </section>
+
+        <!--Seção de apresentação das funcionalidades-->
+        <section class="mx-8 sm:mx-32">
+            <h2 class="mb-8 mt-12 text-4xl text-[#5F37B5] font-bold">
+                Como Funciona?
+            </h2>
+            <div class="p-4 px-10 mx-8 bg-[#5F37B5] rounded-md">
+                <h3 class="text-4xl font-bold text-white mt-12">
+                    É Gratuito! 
+                </h3>
+                <div class="flex flex-col sm:flex-row place-content-between text-white mt-10 sm:mt-16 gap-8 mb-8">
+                    <ul>
+                        <li>✅ Acesso a milhares de oportunidades</li>
+                        <li>✅ Busca inteligente com filtros personalizados</li>
+                        <li>✅ Cursos introdutórios e e-books</li>
+                    </ul>
+                    <ul class="mr-16">
+                        <li>✨ Mentoria individual mensal</li>
+                        <li>✨ Certificados reconhecidos</li>
+                        <li>✨ Acesso prioritário a vagas exclusivas</li>
+                        <li>✨ Análise detalhada do seu perfil profissional</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!--Seção de apresentação de histórias de sucesso-->
+        <section class="flex flex-col justify-center items-center sm:mx-32">
+            <h2 class="self-start p-8 mt-12 text-4xl text-[#5F37B5] font-bold">
+                Histórias de sucesso
+            </h2>
+
+            <!--Carrossel-->
+            <div class="m-8 mt-4 w-5/6 h-5/6 p-8 bg-[#5F37B5] flex flex-col sm:flex-row sm:place-content-between items-center rounded-md">
+                <img src="img/anaJulia.png" alt="Imagem da Ana Júlia">
+
+                <div class="bg-white h-5/6 sm:w-5/6 mt-4 sm:m-6 rounded-md p-2 sm:p-6">
+                    <h3 class="font-bold text-center text-3xl">
+                        Ana Lúcia, 19 anos, São Paulo – SP
+                    </h3>
+                    <p class="m-2 sm:m-4 italic">
+                        "Cresci na Brasilândia sonhando em ser cientista, mas não sabia por onde começar. Até que descobri a Oportunizando e me inscrevi no programa 'Meninas na Astronomia'. Fui selecionada para uma bolsa de iniciação científica no INPE (Instituto Nacional de Pesquisas Espaciais)! Hoje, pesquiso sobre satélites e dou palestras para outras garotas da periferia. A plataforma não só me mostrou o caminho, mas me deu conexões e suporte para acreditar que a ciência também é nosso lugar."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!--Seção final-->
+        <section class="flex flex-col justify-center items-center mt-12 px-8 sm:px-0 mb-12">
+            <h3 class="italic text-3xl sm:text-4xl font-bold text-[#5F37B5]">
+                "Seu futuro não pode esperar. Sua oportunidade está aqui."
+            </h3>
+
+            <div class="flex gap-4 place-content-around mt-8 w-full sm:w-5/6 p-2">
+                <a href="/createUser" class="bg-[#F3CF64] p-3 w-5/6 rounded-md text-[#442F72] shadow-md flex justify-center items-center">
+                    Cadastre-se gratuitamente
+                </a>
+                <a href="#elementFocus" class="bg-[#F3CF64] p-3  w-5/6 rounded-md text-[#442F72] shadow-md flex justify-center items-center">
+                    Saiba mais
+                </a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
+ <%- include('partials/footer') %>
+    </body>
+
+</html>

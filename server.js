@@ -3,7 +3,22 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const pool = require('./config/db');
+
+//interpretar dados de formulários HTML (application/x-www-form-urlencoded)
+app.use(express.urlencoded({ extended: true }));
+//Usar o express com json
+app.use(express.json());
 const session = require('express-session');
+require('dotenv').config();
+
+//definindo sessão
+app.use(session({
+  secret: process.env.SESSION_SECRET,  
+  resave: false,
+  saveUninitialized: false,
+  cookie: { secure: false }
+}));
+
 
 //Definição da views
 app.set('view engine', 'ejs');
@@ -12,8 +27,20 @@ app.set('views', path.join(__dirname, 'views'));
 //Definição do public
 app.use(express.static(path.join(__dirname, 'public')));
 
-//Usar o express
-app.use(express.json());
+//importando caminho das rotas principais
+const userRoutes = require('./routes/userRoutes');
+const interestsRoutes = require('./routes/interestsRoutes');
+const landingPageRoutes = require('./routes/frontRoutes');
+
+//Definindo rotas principais
+app.use('/', userRoutes);
+app.use('/', interestsRoutes);
+app.use('/', landingPageRoutes);
+
+//Criar rota para team
+/* app.get('/team', (req, res) => {
+  res.render('team')
+}) */
 
 //Usar o middleware de ler requisições de post
 app.use(express.urlencoded({extended: true}))
