@@ -35,3 +35,10 @@ exports.deleteUser = async(id)=>{
 
     return result.rows[0];
 }
+
+//verificar se ja tem interesses
+exports.interestsExist = async(user_id)=>{
+    const result = await pool.query('SELECT * FROM user_areas WHERE user_id = $1', [user_id]);
+
+    
+}

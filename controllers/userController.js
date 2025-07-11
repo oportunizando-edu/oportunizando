@@ -34,7 +34,12 @@ exports.loginUser = async(req, res)=>{
         role: user.role
     }
     console.log('sessão:', req.session);
-    //redireciona para outra rota
+    
+    //verifica se o usuário ja escolheu áreas de interesse
+    const user_id = user.id;
+
+    
+
     res.redirect('/interestsAll');
 
     } catch (err) {
