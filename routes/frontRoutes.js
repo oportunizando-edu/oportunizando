@@ -17,6 +17,7 @@ router.get('/opportunities', (req, res) => {
 
 // Nova rota para o kanban
 router.get('/kanban', kanbanController.renderKanban);
+router.post('/kanban/update-state', kanbanController.updateOpportunityState);
 
 router.get('/students', (req, res) => {
   res.render('students');
