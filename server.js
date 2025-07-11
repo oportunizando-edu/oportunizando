@@ -3,7 +3,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const pool = require('./config/db');
-
+//Usar o middleware de ler requisições de post
+app.use(express.urlencoded({extended: true}))
 //Usar o express com json
 app.use(express.json());
 const session = require('express-session');
@@ -39,9 +40,6 @@ app.use('/', landingPageRoutes);
 /* app.get('/team', (req, res) => {
   res.render('team')
 }) */
-
-//Usar o middleware de ler requisições de post
-app.use(express.urlencoded({extended: true}))
 
 //Usar o session
 app.use(session({

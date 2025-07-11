@@ -34,18 +34,17 @@ exports.loginUser = async(req, res)=>{
         role: user.role
     }
     console.log('sessão:', req.session);
-    
+
     //verifica se o usuário ja escolheu áreas de interesse
-    const user_id = user.id;
-
+    const redirectUser = await userModel.interestsExist(user.id);
+    if(redirectUser.rows.length === 0){
+    return res.redirect('/interestsAll');
+    }
+    return res.redirect('/homeStudents');
     
-
-    res.redirect('/interestsAll');
-
     } catch (err) {
     res.status(500).render('login', { erro: err });
   }
-
 }
 
 //delete user
