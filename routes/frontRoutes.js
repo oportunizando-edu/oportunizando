@@ -22,6 +22,15 @@ router.get('/institutions', (req, res) => {
   res.render('institutions')
 });
 
+router.get('/profile', (req, res) => {
+  res.render('profile', {
+        user: user.id,
+        nome: user.name,
+        email: user.email,
+        senha: user.password
+    })
+});
+
 // Rota para "Conheça nossos talentos" - redireciona para a seção de histórias de sucesso
 router.get('/talentos', (req, res) => {
   res.redirect('/#historias-sucesso');
