@@ -3,9 +3,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const pool = require('./config/db');
-
-//interpretar dados de formulários HTML (application/x-www-form-urlencoded)
-app.use(express.urlencoded({ extended: true }));
+//Usar o middleware de ler requisições de post
+app.use(express.urlencoded({extended: true}))
 //Usar o express com json
 app.use(express.json());
 const session = require('express-session');
