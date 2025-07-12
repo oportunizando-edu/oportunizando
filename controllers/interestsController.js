@@ -11,7 +11,9 @@ exports.selectAreas = async (req, res) => {
 
   try {
     const result = await interestsModel.selectAreas(user_id, area_ids);
-     res.redirect('/homeStudents');
+
+     res.redirect('/opportunities');
+    
   } catch (err) {
     return res.status(500).json({ erro: err.message });
   }

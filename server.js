@@ -41,16 +41,8 @@ app.use('/', landingPageRoutes);
   res.render('team')
 }) */
 
-//Usar o session
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: {
-    secure: false, // true em HTTPS
-    maxAge: 24000 * 60 * 60 // 24 horas
-  }
-}));
+//Usar o middleware de ler requisições de post
+app.use(express.urlencoded({extended: true}))
 
 //Rota do homeStudent
 const homeStudentRoutes = require('./routes/homeStudentsRoutes');
