@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    <%= pageTitle %> | Início
+    KanBan
   </title>
 
   <!-- Bootstrap CSS -->
@@ -13,12 +13,13 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+  <!--Adicionar o Tailwind usando o cdn-->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<%- include('partials/header', { pageTitle: 'Oportunizando' }) %>
+<%- include('partials/header')%>
 <%- include('partials/secondheader', { pageTitle: 'Oportunizando' }) %>
 
-<main style="background: #fff; min-height: 70vh;">
+<main style="background: #fff;">
   <div class="container py-5">
     <h2 style="color: #4A2E88; font-size: 2rem; font-weight: bold; margin-bottom: 32px;">Minhas inscrições</h2>
     <div class="row justify-content-center" style="gap: 0;">
@@ -58,7 +59,15 @@
                 <div class="d-flex justify-content-end mt-3">
                   <a href="/opportunity/<%= opportunity.id %>" class="btn" style="background: #6C3FC5; color: #fff; border-radius: 6px; font-size: 1rem; font-weight: 500; min-width: 100px;">Ver mais</a>
                 </div>
-              </div>
+                <form action="/kanban" method="POST">
+                  <select class="w-full py-3 mt-2 bg-[#6C3FC5] rounded-md text-white text-center font-bold" name="newState" onchange="this.form.submit()">
+                    <option value="a-fazer" class="mx-auto">A fazer</option>
+                    <option value="fazendo" class="mx-auto">Fazendo</option>
+                    <option value="feito" class="mx-auto">Feito</option>
+                  </select>
+                  <input type="hidden" name="opportunityId" value="<%= opportunity.id %>">
+                </div>
+                </form>
             <% }); %>
           <% } else { %>
             <div style="color: #999; font-style: italic; margin-top: 20px;">Nenhuma oportunidade adicionada</div>
@@ -101,6 +110,14 @@
                 <div class="d-flex justify-content-end mt-3">
                   <a href="/opportunity/<%= opportunity.id %>" class="btn" style="background: #6C3FC5; color: #fff; border-radius: 6px; font-size: 1rem; font-weight: 500; min-width: 100px;">Ver mais</a>
                 </div>
+                <form action="/kanban" method="POST">
+                  <select class="w-full py-3 mt-2 bg-[#6C3FC5] rounded-md text-white text-center font-bold" name="newState" onchange="this.form.submit()">
+                    <option value="fazendo" class="mx-auto">Fazendo</option>
+                    <option value="a-fazer" class="mx-auto">A fazer</option>
+                    <option value="feito" class="mx-auto">Feito</option>
+                  </select>
+                  <input type="hidden" name="opportunityId" value="<%= opportunity.id %>">
+                </form>
               </div>
             <% }); %>
           <% } else { %>
@@ -144,6 +161,14 @@
                 <div class="d-flex justify-content-end mt-3">
                   <a href="/opportunity/<%= opportunity.id %>" class="btn" style="background: #6C3FC5; color: #fff; border-radius: 6px; font-size: 1rem; font-weight: 500; min-width: 100px;">Ver mais</a>
                 </div>
+                <form action="/kanban" method="POST">
+                  <select class="w-full py-3 mt-2 bg-[#6C3FC5] rounded-md text-white text-center font-bold" name="newState" onchange="this.form.submit()">
+                    <option value="feito" class="mx-auto">Feito</option>
+                    <option value="a-fazer" class="mx-auto">A fazer</option>
+                    <option value="fazendo" class="mx-auto">Fazendo</option>
+                  </select>
+                  <input type="hidden" name="opportunityId" value="<%= opportunity.id %>">
+                </form>
               </div>
             <% }); %>
           <% } else { %>
@@ -156,5 +181,12 @@
 </main>
 
 <%- include('partials/footer') %>
+
+  <script>
+
+  </script>
+   </body>
+
+</html>
 
 </rewritten_file>

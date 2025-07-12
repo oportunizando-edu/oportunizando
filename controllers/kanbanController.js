@@ -1,3 +1,4 @@
+const { parse } = require('dotenv');
 const opportunityModel = require('../models/opportunityModel');
 
 exports.renderKanban = async (req, res) => {
@@ -5,7 +6,7 @@ exports.renderKanban = async (req, res) => {
     const userId = req.session.user?.user_id;
     
     if (!userId) {
-      return res.redirect('/login');
+      return res.redirect('/loginUser');
     }
 
     // Buscar oportunidades do usuário por estado
@@ -34,14 +35,15 @@ exports.updateOpportunityState = async (req, res) => {
   try {
     const userId = req.session.user?.user_id;
     const { opportunityId, newState } = req.body;
+    const opportunitytNumberId = parseInt(opportunityId, 10);
 
     if (!userId) {
       return res.status(401).json({ message: 'Usuário não autenticado' });
     }
 
-    const updated = await opportunityModel.updateOpportunityState(userId, opportunityId, newState);
+    const updated = await opportunityModel.updateOpportunityState(userId, opportunitytNumberId, newState);
     
-    res.json({ success: true, data: updated });
+    res.redirect('/kanban');
   } catch (error) {
     console.error('Erro ao atualizar estado:', error);
     res.status(500).json({ message: 'Erro ao atualizar estado da oportunidade' });

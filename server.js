@@ -56,6 +56,9 @@ app.use('/opportunities', opportunitiesByAreaRoutes)
 const opportunityRoutes = require('./routes/opportunityRoutes');
 app.use('/opportunity', opportunityRoutes);
 
+const kanbanRoutes = require('./routes/kanbanRoutes')
+app.use('/kanban', kanbanRoutes);
+
 //Testar a conexão com o bd:
 const db = require('./config/db');
 
