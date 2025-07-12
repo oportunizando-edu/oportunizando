@@ -33,8 +33,7 @@ exports.loginUser = async(req, res)=>{
         nome: user.name,
         email: user.email,
         role: user.role,
-        senha: user.passsword,
-        isLogged: true
+        senha: user.password
     }
     console.log('sessão:', req.session);
 
@@ -42,13 +41,9 @@ exports.loginUser = async(req, res)=>{
     const redirectUser = await userModel.interestsExist(user.id);
 
     if(redirectUser.rows.length === 0){
-    return res.render('interests');
+    return res.redirect('/interests');
     }
-    return res.render('profile', {
-        nome: user.name,
-        email: user.email,
-        senha: user.password
-    });
+    return res.redirect('/homeStudents');
     
     } catch (err) {
     res.status(500).render('login', { erro: err });
