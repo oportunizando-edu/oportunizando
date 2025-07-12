@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+
+    <!-- Bootstrap (opcional) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style-landingpage.css">
+</head>
+
+<body class="min-h-screen flex flex-col">
+
+    <!-- Cabeçalho -->
+    <%- include('partials/header', { pageTitle: 'Oportunizando' }) %>
+        <%- include('partials/secondheader', { pageTitle: 'Oportunizando' }) %>
+
+            <!-- Lado esquerdo -->
+            <div class="max-w-6xl mx-auto px-4 mt-10 mb-20">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-start mt-20 mb-[350px]">
+                    <!-- Imagem de perfil -->
+                    <div class="flex justify-center">
+                        <img src="/images/user.png" alt="Profile" class="w-32 h-32 rounded-full border-3 border-[#472E7C]" />
+                    </div>
+
+                    <!-- Informações -->
+                    <div class="grid grid-cols-1 gap-4 w-[350px]">
+                        <div>
+                            <p class="font-semibold text-gray-700 mb-1">Nome</p>
+                            <div class="border border-gray-400 bg-gray-50 rounded p-3">
+                                <%= nome %>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-gray-700 mb-1">Email</p>
+                            <div class="border border-gray-400 bg-gray-50 rounded p-3">
+                                <%= email %>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="font-semibold text-gray-700 mb-1">Senha</p>
+                            <div class="border border-gray-400 bg-gray-50 rounded p-3 flex items-center">
+                                <input type="password" id="confirmPassword" name="confirmPassword" value="<%= senha %>"
+                                    readonly class="bg-gray-50 outline-none w-full" />
+                                <button type="button" id="confirmPasswordButton" class="ml-3">
+                                    <img src="/images/passwordIcon.svg" alt="mostrar senha" class="w-5 h-5" id="img3" />
+                                    <img src="/images/password1Icon.svg" alt="esconder senha" class="w-5 h-5 hidden"
+                                        id="img4" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Script mostrar/ocultar senha -->
+            <script>
+                const passwordInput1 = document.getElementById('confirmPassword');
+                const passwordButton1 = document.getElementById('confirmPasswordButton');
+                const img3 = document.getElementById('img3');
+                const img4 = document.getElementById('img4');
+
+                passwordButton1.addEventListener('click', () => {
+                    if (passwordInput1.type === 'password') {
+                        passwordInput1.type = 'text';
+                        img3.classList.add('hidden');
+                        img4.classList.remove('hidden');
+                    } else {
+                        passwordInput1.type = 'password';
+                        img3.classList.remove('hidden');
+                        img4.classList.add('hidden');
+                    }
+                });
+            </script>
+
+            <%- include('partials/footer') %>
+</body>
+
+</html>

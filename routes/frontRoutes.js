@@ -22,6 +22,19 @@ router.get('/institutions', (req, res) => {
   res.render('institutions')
 });
 
+//rota para profile
+router.get('/profile', (req, res) => {
+  const user = req.session.user;
+
+  res.render('profile', {
+    user: user.user_id,
+    nome: user.nome,
+    email: user.email,
+    senha: user.senha 
+  });
+});
+
+
 
 // Rota para "Conheça nossos talentos" - redireciona para a seção de histórias de sucesso
 router.get('/talentos', (req, res) => {
