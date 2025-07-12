@@ -22,10 +22,17 @@ exports.addOpportunityToStudent = async(req, res) => {
         const userId = req.session.user?.user_id;
         const opportunityId = req.params.id;
 
+        if (!userId) {
+            return res.status(401).json({ message: 'Usuário não autenticado' });
+        }
+
         const opportunityToStudent = await opportunityModel.addOpportunityToStudent(userId, opportunityId);
-        res.status(200).json({ message: 'Oportunidade adicionada com sucesso', opportunityToStudent});
+        
+        // Redirecionar para o kanban após adicionar a oportunidade
+        res.redirect('/kanban');
 
     } catch(err){
+        console.error('Erro ao adicionar oportunidade:', err);
         res.status(500).json({ message: err.message })
     }
 }

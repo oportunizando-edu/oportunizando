@@ -31,16 +31,23 @@ exports.loginUser = async(req, res)=>{
     req.session.user = {
         user_id: user.id,
         nome: user.name,
-        role: user.role
+        email: user.email,
+        role: user.role,
+        senha: user.password
     }
     console.log('sessão:', req.session);
-    //redireciona para outra rota
-    res.redirect('/interestsAll');
 
+    //verifica se o usuário ja escolheu áreas de interesse
+    const redirectUser = await userModel.interestsExist(user.id);
+
+    if(redirectUser.rows.length === 0){
+    return res.redirect('/interestsAll');
+    }
+    return res.redirect('/homeStudents');
+    
     } catch (err) {
     res.status(500).render('login', { erro: err });
   }
-
 }
 
 //delete user

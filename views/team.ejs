@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>Team</title>
+  <title>
+    Oportunizando para oportunidades
+  </title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!--Adicionar o Tailwind usando o cdn-->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <div class="bg-white-100 p-8 font-sans text-gray-800 ml-4"> 
+<%- include('partials/header')%>
+  <div class="bg-white-100 p-8 font-sans text-gray-800 ml-4 sm:mx-32"> 
   <!-- Título -->
   <h1 class="text-3xl font-bold text-purple-800 mb-6">
     Nosso Time: A Força por Trás da Oportunizando
@@ -111,7 +117,7 @@
   </div>
 
 <!-- Texto inferior -->
- <div class="bg-white-100 p-8 font-sans text-gray-800 ml-4"> 
+ <div class="bg-white-100 p-8 font-sans text-gray-800 ml-4 sm:mx-32"> 
   
   <p class="text-lg mb-4">
     Juntos, somos mais que um time: somos uma missão.<br>
@@ -119,19 +125,28 @@
   </p>
 
   <!-- botões -->
- <div class="flex flex-wrap gap-6 justify-center">
+ <div class="flex flex-col sm:flex-row gap-6 justify-between w-full">
   <!-- botão 1 -->
- <div class="flex justify-center mt-6">
-  <button class="w-[550px] h-12 px-6 py-2 bg-yellow-500 hover:bg-purple-700 text-purple-800 text-base font-semibold hover:text-white rounded-lg shadow-md transition duration-300">
-    Saiba mais sobre a Oportunizando
-  </button>
+ <div class="flex justify-center mt-6 w-full">
+  <a href="/" class="w-full h-12 px-6 py-2 bg-yellow-500 hover:bg-purple-700 text-purple-800 text-base font-semibold hover:text-white rounded-lg shadow-md transition duration-300 flex justify-center items-center">
+    <span>
+      Saiba mais sobre a Oportunizando
+    </span>
+  </a>
 </div>
 <!-- botão 2 -->
- <div class="flex justify-center mt-6">
-  <button class="w-[550px] h-12 px-6 py-2 bg-yellow-500 hover:bg-purple-700 text-purple-800 text-base font-semibold hover:text-white rounded-lg shadow-md transition duration-300">
-    Fale com a equipe
-  </button>
+ <div class="flex justify-center mt-6 w-full">
+  <a href="/#contato" class="w-full h-12 px-6 py-2 bg-yellow-500 hover:bg-purple-700 text-purple-800 text-base font-semibold hover:text-white rounded-lg shadow-md transition duration-300 text-center flex justify-center items-center">
+    <span>
+      Fale com a equipe
+    </span>
+  </a>
 </div>
 </div>
+
+ </div>
+<%- include('partials/footer') %>
+
 </body>
 </html>
+

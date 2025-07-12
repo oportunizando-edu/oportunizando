@@ -20,7 +20,7 @@ module.exports = {
         const result = await pool.query(query);
         //retornar todos os resultados em um array
         return result.rows;
-    },   
+    },
     
     //pegar as áreas de acordo com o filtro
     async getAreasByTitle(title){

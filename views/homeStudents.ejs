@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>
-    Início
+    Oportunidades por categoria
   </title>
 
   <!-- Bootstrap CSS -->
@@ -13,35 +13,25 @@
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-  <!-- Custom CSS -->
-  <link rel="stylesheet" href="/css/style-landingpage.css">
-</head>
-<%- include('partials/header', { pageTitle: 'Oportunizando' }) %>
-
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Estudantes</title>
     <!--Adicionar o Tailwind usando o cdn-->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
+<%- include('partials/header')%>
+<%- include('partials/secondheader') %>
     
     <!--Seção de minhas categorias-->
     <% if(isLogged) {%>
         <section>
-            <div class="flex justify-between m-8 flex flex-col sm:flex-row gap-4">
+            <div class="flex justify-between m-8 flex flex-col sm:mx-32 sm:flex-row gap-4">
                 <h1 class="w-1/2 text-3xl text-[#5F37B5]">
                     Minhas Categorias
                 </h1>
             </div>
 
-            <div class="flex flex-wrap justify-evenly sm:justify-start mx-8 gap-4 my-12">
+            <div class="flex flex-wrap justify-center mx-8 gap-4 my-12">
             <% areasByStudent.forEach( area => { %>
-                <a href="/opportunities/<%= area.id%>" class="rounded-md bg-[#5F37B5] text-white font-bold p-12 sm:p-24 py-8 sm:py-12 shadow-md sm:w-1/4 flex justify-center border-yellow-200 border-[3px]">
+                <a href="/opportunities/<%= area.id%>" class="rounded-md bg-[#5F37B5] text-white font-bold p-12 sm:p-24 py-8 sm:py-12 shadow-md w-full sm:w-1/4 flex justify-center border-yellow-200 border-[3px]">
                     <p class="text-center">
                     <%= area.title.charAt(0).toUpperCase() + area.title.slice(1)%>
                     </p>
@@ -95,10 +85,8 @@
         </div>
     </section>
 
+    <%- include('partials/footer') %>
 </body>
 </html>
 
- <%- include('partials/footer') %>
-    </body>
-
-</html>
+  
