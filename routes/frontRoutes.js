@@ -26,6 +26,10 @@ router.get('/institutions', (req, res) => {
 router.get('/profile', (req, res) => {
   const user = req.session.user;
 
+  if(!user){
+    res.redirect('/loginUser');
+  }
+
   res.render('profile', {
     user: user.user_id,
     nome: user.nome,
