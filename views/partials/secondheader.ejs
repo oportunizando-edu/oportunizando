@@ -1,11 +1,52 @@
-<div style="background: #6C3FC5; padding: 24px 0; display: flex; justify-content: center; align-items: center; gap: 32px;">
-  <form style="position: relative; width: 466.43px; height: 56.35px;">
-    <input type="text" placeholder="Pesquisar" style="width: 100%; height: 56.35px; padding: 16px 48px 16px 20px; border: none; border-radius: 10px; font-size: 1.2rem; background: #fff; color: #888; outline: none;">
-    <span style="position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: #aaa; font-size: 1.3rem;">
-      <svg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='none' viewBox='0 0 24 24'><circle cx='11' cy='11' r='7' stroke='#aaa' stroke-width='2'/><path stroke='#aaa' stroke-width='2' stroke-linecap='round' d='M20 20l-3.5-3.5'/></svg>
-    </span>
+<div class="bg-[#6C3FC5] py-6 flex justify-between items-center">
+  <form class="relative w-full h-14 ml-4 mr-2 sm:mx-8" action="/homeStudents" method="POST" >
+    <input
+      name="area"
+      type="text"
+      placeholder="Pesquisar"
+      class="w-full h-14 px-12 pr-12 pl-5 py-4 border-none rounded-xl text-lg bg-white text-gray-400 outline-none"
+    />
+    <button type="submit" class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-xl border-black">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="7" stroke="#aaa" stroke-width="2" />
+        <path stroke="#aaa" stroke-width="2" stroke-linecap="round" d="M20 20l-3.5-3.5" />
+      </svg>
+    </button>
   </form>
-  <a href="#" style="background: #4A2E88; color: #fff; font-size: 1.25rem; font-weight: 400; border-radius: 10px; padding: 0; width: 250.43px; height: 56.35px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s;">Explorar</a>
-  <a href="/kanban" style="background: #4A2E88; color: #fff; font-size: 1.25rem; font-weight: 400; border-radius: 10px; padding: 0; width: 250.43px; height: 56.35px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s;">Minhas inscrições</a>
-  <a href="/profile" style="background: #4A2E88; color: #fff; font-size: 1.25rem; font-weight: 400; border-radius: 10px; padding: 0; width: 250.43px; height: 56.35px; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: background 0.2s;">Meu Perfil</a>
+
+  <div class="hidden sm:flex sm:flex-between sm:gap-4 sm:w-full">
+    <a href="/homeStudents"
+       class="w-1/4 bg-[#4A2E88] text-white text-lg sm:text-xl font-normal rounded-xl w-64 h-14 flex items-center justify-center no-underline transition-colors duration-200">
+      Explorar
+    </a>
+  
+    <a href="/kanban"
+       class="w-1/4 bg-[#4A2E88] text-white text-xl font-normal rounded-xl w-64 h-14 flex items-center justify-center no-underline transition-colors duration-200">
+      Minhas inscrições
+    </a>
+  
+    <a href="/profile"
+       class="w-1/4 bg-[#4A2E88] text-white text-xl font-normal rounded-xl w-64 h-14 flex items-center justify-center no-underline transition-colors duration-200">
+      Meu Perfil
+    </a>
+  </div>
+
+  <div class="relative inline-block text-left sm:hidden">
+  <button onclick="toggleDropdown()" class="bg-white rounded-md p-2 mr-8">
+    <img src="https://www.svgrepo.com/show/524617/hamburger-menu.svg" class="w-12" alt="Menu Hamburguer">
+  </button>
+
+  <div id="dropdown" class="hidden absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+    <a href="/homeStudents" class="block px-4 py-2 text-sm hover:bg-gray-100">Explorar</a>
+    <a href="/kanban" class="block px-4 py-2 text-sm hover:bg-gray-100">Minhas inscrições</a>
+    <a href="/profile" class="block px-4 py-2 text-sm hover:bg-gray-100">Meu Perfil</a>
+  </div>
+</div>
+
+<script>
+  function toggleDropdown() {
+    document.getElementById("dropdown").classList.toggle("hidden");
+  }
+</script>
+
 </div>
