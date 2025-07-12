@@ -41,7 +41,7 @@ exports.loginUser = async(req, res)=>{
     const redirectUser = await userModel.interestsExist(user.id);
 
     if(redirectUser.rows.length === 0){
-    return res.redirect('/interests');
+    return res.redirect('/interestsAll');
     }
     return res.redirect('/homeStudents');
     
